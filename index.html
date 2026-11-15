@@ -1,0 +1,1114 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102e35">
+  <meta name="description" content="Образовательный справочник о странах Африки и Латинской Америки с картой, поиском и методологией источников.">
+  <title>Атлас — Африка и Латинская Америка</title>
+  <style>
+    :root {
+      --bg:#f4efe4;
+      --paper:#fffdf7;
+      --paper-2:#ebe4d5;
+      --ink:#192d32;
+      --muted:#647277;
+      --line:#d7cdbb;
+      --ocean:#0c5961;
+      --ocean-dark:#102e35;
+      --terra:#bd5434;
+      --amber:#e5a323;
+      --leaf:#527b43;
+      --sky:#2c6ca5;
+      --magenta:#aa3e70;
+      --success:#347448;
+      --warning:#a9680a;
+      --danger:#aa433b;
+      --info:#286b94;
+      --shadow:0 20px 50px rgba(33,47,43,.12);
+      --radius:22px;
+      --nav-h:74px;
+      --display:Georgia,"Times New Roman",serif;
+      --body:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    }
+    * { box-sizing:border-box }
+    html { scroll-behavior:smooth; scroll-padding-top:96px }
+    body {
+      margin:0;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 8% 2%,rgba(229,163,35,.19),transparent 29rem),
+        radial-gradient(circle at 91% 12%,rgba(12,89,97,.17),transparent 32rem),
+        radial-gradient(circle at 54% 96%,rgba(170,62,112,.10),transparent 34rem),
+        var(--bg);
+      font-family:var(--body);
+      line-height:1.55;
+      min-width:320px;
+    }
+    body::before {
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.16;
+      z-index:-1;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.25'/%3E%3C/svg%3E");
+    }
+    ::selection { background:#f0c969; color:#183137 }
+    * { scrollbar-width:thin; scrollbar-color:var(--ocean) var(--paper-2) }
+    ::-webkit-scrollbar { width:11px; height:11px }
+    ::-webkit-scrollbar-track { background:var(--paper-2) }
+    ::-webkit-scrollbar-thumb { background:var(--ocean); border:3px solid var(--paper-2); border-radius:20px }
+    ::-webkit-scrollbar-thumb:hover { background:var(--terra) }
+    button,input,select,textarea { font:inherit }
+    button,a { -webkit-tap-highlight-color:transparent }
+    button { cursor:pointer }
+    a { color:var(--ocean); text-decoration-thickness:1px; text-underline-offset:3px }
+    a:hover { color:var(--terra) }
+    :focus-visible { outline:3px solid var(--amber); outline-offset:3px }
+    .skip { position:fixed; left:16px; top:-80px; z-index:100; background:var(--paper); padding:12px 18px; border-radius:12px }
+    .skip:focus { top:12px }
+    .nav {
+      position:fixed; inset:0 0 auto; height:var(--nav-h); z-index:50;
+      display:flex; align-items:center; gap:26px; padding:0 clamp(18px,4vw,64px);
+      background:rgba(255,253,247,.88); border-bottom:1px solid rgba(188,171,142,.6);
+      backdrop-filter:blur(18px);
+    }
+    .brand { display:flex; align-items:center; gap:11px; color:var(--ink); text-decoration:none; flex:none }
+    .brand-mark { width:38px; height:38px; border-radius:50%; background:var(--ocean-dark); display:grid; place-items:center; box-shadow:inset 0 0 0 5px #e6b44b }
+    .brand-mark svg { width:24px; height:24px }
+    .brand strong { font-family:var(--display); font-size:22px; letter-spacing:-.5px }
+    .brand small { display:block; color:var(--muted); font-size:10px; letter-spacing:.13em; text-transform:uppercase; margin-top:-4px }
+    .nav-links { display:flex; align-items:center; gap:5px; margin-left:auto }
+    .nav-links a { color:var(--ink); text-decoration:none; padding:9px 12px; border-radius:10px; font-size:14px; font-weight:650 }
+    .nav-links a:hover,.nav-links a.active { background:#e5eee8; color:var(--ocean) }
+    .nav-actions { display:flex; align-items:center; gap:8px }
+    .icon-btn { border:1px solid var(--line); background:var(--paper); color:var(--ink); width:40px; height:40px; border-radius:12px; display:grid; place-items:center }
+    .icon-btn:hover { border-color:var(--ocean); transform:translateY(-1px) }
+    .menu-btn { display:none }
+    main { padding-top:var(--nav-h); min-height:100vh }
+    .wrap { width:min(1380px,calc(100% - 40px)); margin:auto }
+    .hero { position:relative; overflow:hidden; padding:clamp(52px,8vw,112px) 0 68px; border-bottom:1px solid var(--line) }
+    .hero::after { content:""; position:absolute; width:520px; height:520px; border:1px solid rgba(12,89,97,.16); border-radius:50%; right:-170px; top:-170px; box-shadow:0 0 0 55px rgba(12,89,97,.035),0 0 0 110px rgba(12,89,97,.025) }
+    .hero-grid { display:grid; grid-template-columns:1.15fr .85fr; gap:60px; align-items:center; position:relative; z-index:1 }
+    .eyebrow { display:flex; align-items:center; gap:9px; color:var(--terra); font-size:12px; font-weight:800; letter-spacing:.16em; text-transform:uppercase }
+    .eyebrow::before { content:""; width:28px; height:2px; background:currentColor }
+    h1,h2,h3,p { margin-top:0 }
+    h1 { font-family:var(--display); font-size:clamp(48px,7vw,92px); line-height:.98; letter-spacing:-.055em; margin:20px 0 25px; max-width:850px }
+    h1 em { color:var(--ocean); font-style:normal }
+    .lead { font-size:clamp(17px,2vw,21px); color:#46585b; max-width:710px }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:30px }
+    .btn { border:0; border-radius:13px; padding:13px 19px; font-weight:750; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; gap:9px; transition:.2s }
+    .btn-primary { background:var(--ocean-dark); color:white; box-shadow:0 8px 20px rgba(16,46,53,.18) }
+    .btn-primary:hover { background:var(--ocean); color:white; transform:translateY(-2px) }
+    .btn-secondary { background:var(--paper); color:var(--ink); border:1px solid var(--line) }
+    .btn-secondary:hover { border-color:var(--ocean); color:var(--ocean); transform:translateY(-2px) }
+    .btn-small { padding:8px 12px; border-radius:10px; font-size:13px }
+    .hero-art { min-height:390px; position:relative; display:grid; place-items:center }
+    .orb { width:min(390px,80vw); aspect-ratio:1; border-radius:50%; background:radial-gradient(circle at 32% 28%,#f5d477 0 4%,#d9863e 25%,#b94e35 52%,#174e55 76%); box-shadow:inset -35px -25px 70px rgba(7,37,43,.5),0 35px 70px rgba(41,66,59,.25); position:relative; animation:float 7s ease-in-out infinite }
+    .orb::before,.orb::after { content:""; position:absolute; border:1px solid rgba(255,255,255,.38); border-radius:50%; inset:14% -8%; transform:rotate(-18deg) }
+    .orb::after { inset:-8% 18%; transform:rotate(28deg) }
+    .orb-label { position:absolute; background:var(--paper); border:1px solid var(--line); box-shadow:var(--shadow); border-radius:14px; padding:10px 14px; font-size:13px; font-weight:750 }
+    .orb-label.one { left:0; top:20% }
+    .orb-label.two { right:-10px; bottom:20% }
+    @keyframes float { 50% { transform:translateY(-13px) rotate(2deg) } }
+    .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:18px; overflow:hidden; margin-top:48px }
+    .stat { background:rgba(255,253,247,.8); padding:19px 22px }
+    .stat b { display:block; font-family:var(--display); font-size:32px; line-height:1.1 }
+    .stat span { color:var(--muted); font-size:12px }
+    section.block { padding:76px 0 }
+    .section-head { display:flex; justify-content:space-between; align-items:end; gap:25px; margin-bottom:28px }
+    .section-head h2 { font-family:var(--display); font-size:clamp(34px,4vw,52px); letter-spacing:-.035em; line-height:1.05; margin:8px 0 0 }
+    .section-head p { color:var(--muted); max-width:620px; margin-bottom:0 }
+    .region-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:15px }
+    .region-card { background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:22px; text-decoration:none; color:var(--ink); position:relative; overflow:hidden; min-height:165px; transition:.22s }
+    .region-card::after { content:""; position:absolute; width:100px; height:100px; border-radius:50%; background:var(--rc); opacity:.14; right:-30px; bottom:-35px }
+    .region-card:hover { transform:translateY(-5px); box-shadow:var(--shadow); border-color:var(--rc); color:var(--ink) }
+    .region-dot { width:12px; height:12px; border-radius:50%; background:var(--rc); display:inline-block; margin-right:7px }
+    .region-card h3 { font-size:17px; margin:15px 0 7px }
+    .region-card p { color:var(--muted); font-size:13px; margin:0 }
+    .region-card b { position:absolute; right:18px; top:17px; font-family:var(--display); font-size:27px; color:var(--rc) }
+    .feature-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px }
+    .country-card { background:var(--paper); border:1px solid var(--line); border-radius:18px; overflow:hidden; transition:.2s; position:relative }
+    .country-card:hover { transform:translateY(-4px); box-shadow:var(--shadow) }
+    .country-cover { height:95px; background:linear-gradient(125deg,var(--rc),var(--ocean-dark)); position:relative; overflow:hidden }
+    .country-cover::after { content:""; position:absolute; inset:0; background:repeating-linear-gradient(115deg,transparent 0 18px,rgba(255,255,255,.09) 19px 20px) }
+    .flag { font-size:40px; position:absolute; left:18px; bottom:12px; z-index:1; filter:drop-shadow(0 3px 4px rgba(0,0,0,.2)) }
+    .country-body { padding:18px }
+    .country-body h3 { margin:0 0 4px; font-size:19px }
+    .country-body h3 a { color:var(--ink); text-decoration:none }
+    .country-body h3 a:hover { color:var(--ocean) }
+    .meta { color:var(--muted); font-size:13px }
+    .pill-row { display:flex; flex-wrap:wrap; gap:6px; margin-top:14px }
+    .pill { border:1px solid var(--line); background:#f8f4ea; border-radius:99px; padding:4px 9px; font-size:11px; color:#526165 }
+    .star { position:absolute; right:13px; top:13px; z-index:2; border:0; background:rgba(255,253,247,.9); width:35px; height:35px; border-radius:50%; font-size:18px; color:#8c7b62 }
+    .star.on { color:#c1840c; background:#fff3c9 }
+    .toolbar { background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:16px; display:grid; grid-template-columns:2fr repeat(4,1fr) auto; gap:10px; margin-bottom:22px; box-shadow:0 8px 25px rgba(39,53,47,.05) }
+    .field { display:flex; flex-direction:column; gap:5px }
+    .field label { font-size:10px; text-transform:uppercase; letter-spacing:.1em; color:var(--muted); font-weight:800 }
+    input,select,textarea { width:100%; border:1px solid var(--line); background:#fffef9; color:var(--ink); border-radius:10px; padding:10px 12px; min-height:42px }
+    textarea { resize:vertical }
+    .result-line { display:flex; justify-content:space-between; align-items:center; color:var(--muted); font-size:13px; margin:0 0 15px }
+    .country-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:15px }
+    .empty { text-align:center; padding:70px 25px; background:var(--paper); border:1px dashed #b9aa91; border-radius:20px }
+    .empty .big { font-size:45px }
+    .map-layout { display:grid; grid-template-columns:1fr 1fr; gap:20px }
+    .map-panel { background:var(--ocean-dark); border-radius:24px; padding:24px; color:white; overflow:hidden; position:relative }
+    .map-panel::before { content:""; position:absolute; inset:0; opacity:.15; background-image:radial-gradient(circle at 1px 1px,#fff 1px,transparent 0); background-size:22px 22px }
+    .map-panel h3 { font-family:var(--display); font-size:28px; margin-bottom:4px; position:relative }
+    .map-panel p { color:#b9ced0; font-size:13px; position:relative }
+    .tile-map { display:grid; gap:5px; position:relative; margin-top:22px; justify-content:center }
+    .tile { border:0; min-width:43px; height:43px; border-radius:9px; background:var(--rc); color:white; font-size:10px; font-weight:850; display:grid; place-items:center; box-shadow:inset 0 0 0 1px rgba(255,255,255,.2); transition:.15s; position:relative }
+    .tile:hover,.tile:focus-visible { transform:scale(1.14); z-index:3; box-shadow:0 5px 15px rgba(0,0,0,.3),inset 0 0 0 2px white }
+    .tile.fav::after { content:"★"; position:absolute; right:2px; top:0; color:#ffe18a; font-size:9px }
+    .map-legend { display:flex; flex-wrap:wrap; gap:10px 18px; margin-top:22px; position:relative }
+    .map-legend span { font-size:11px; color:#d4e1e0 }
+    .map-note { margin-top:18px; color:var(--muted); font-size:12px }
+    .page-head { padding:55px 0 32px; border-bottom:1px solid var(--line); margin-bottom:32px }
+    .page-head h1 { font-size:clamp(42px,6vw,70px); margin:12px 0 }
+    .breadcrumb { font-size:12px; color:var(--muted); display:flex; gap:8px; align-items:center }
+    .country-hero { background:linear-gradient(120deg,var(--ocean-dark),#174f54 60%,var(--rc)); color:white; border-radius:26px; padding:clamp(25px,5vw,55px); position:relative; overflow:hidden; margin-bottom:22px }
+    .country-hero::after { content:""; position:absolute; width:340px; height:340px; border:1px solid rgba(255,255,255,.16); border-radius:50%; right:-80px; top:-110px; box-shadow:0 0 0 45px rgba(255,255,255,.035),0 0 0 90px rgba(255,255,255,.025) }
+    .country-hero-grid { display:grid; grid-template-columns:auto 1fr auto; gap:25px; align-items:center; position:relative; z-index:1 }
+    .hero-flag { font-size:76px }
+    .country-hero h1 { font-size:clamp(38px,5vw,66px); margin:5px 0 8px }
+    .country-hero .eyebrow { color:#f4cc71 }
+    .country-hero .lead { color:#d5e5e4; font-size:16px; margin:0 }
+    .hero-buttons { display:flex; gap:8px; flex-wrap:wrap }
+    .hero-buttons .btn { background:rgba(255,255,255,.12); color:white; border:1px solid rgba(255,255,255,.25) }
+    .hero-buttons .btn:hover { background:white; color:var(--ocean-dark) }
+    .quick-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:17px; overflow:hidden; margin-bottom:22px }
+    .quick { background:var(--paper); padding:15px }
+    .quick small { display:block; color:var(--muted); font-size:10px; text-transform:uppercase; letter-spacing:.08em; margin-bottom:4px }
+    .quick b { font-size:14px }
+    .country-layout { display:grid; grid-template-columns:220px 1fr; gap:28px; align-items:start }
+    .toc { position:sticky; top:94px; background:var(--paper); border:1px solid var(--line); border-radius:17px; padding:13px; max-height:calc(100vh - 115px); overflow:auto }
+    .toc a { display:block; color:#536367; text-decoration:none; font-size:12px; padding:7px 9px; border-radius:8px }
+    .toc a:hover,.toc a.active { background:#e7efe9; color:var(--ocean) }
+    .article { min-width:0 }
+    .info-section { background:var(--paper); border:1px solid var(--line); border-radius:20px; padding:clamp(20px,3vw,32px); margin-bottom:18px; scroll-margin-top:95px }
+    .info-section h2 { font-family:var(--display); font-size:30px; letter-spacing:-.025em; margin-bottom:16px }
+    .info-section h3 { font-size:16px; margin:22px 0 9px }
+    .info-section p { color:#405256 }
+    .fact-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px }
+    .fact { background:#f7f3e9; border:1px solid #e2d8c6; border-radius:13px; padding:14px }
+    .fact small { color:var(--muted); display:block; font-size:11px; margin-bottom:4px }
+    .fact b { font-size:14px }
+    .source-line { border-top:1px solid var(--line); margin-top:20px; padding-top:12px; font-size:11px; color:var(--muted); display:flex; flex-wrap:wrap; gap:6px 14px }
+    .badge { display:inline-flex; align-items:center; gap:5px; border-radius:99px; padding:4px 9px; font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:.04em }
+    .badge::before { content:""; width:6px; height:6px; border-radius:50%; background:currentColor }
+    .verified { background:#e3f0e5; color:var(--success) }
+    .review { background:#fff0ce; color:var(--warning) }
+    .stale { background:#f7e2df; color:var(--danger) }
+    .info { background:#e2eef5; color:var(--info) }
+    .timeline { border-left:2px solid #d8c8aa; margin-left:8px; padding-left:23px }
+    .timeline-item { position:relative; padding-bottom:19px }
+    .timeline-item::before { content:""; position:absolute; width:11px; height:11px; background:var(--terra); border:3px solid var(--paper); border-radius:50%; left:-30px; top:5px }
+    .timeline-item b { color:var(--terra); font-size:13px }
+    .timeline-item p { margin:3px 0 0; font-size:14px }
+    .people-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px }
+    .person { border:1px solid var(--line); border-radius:14px; padding:16px; background:#faf7ef }
+    .person .avatar { width:42px; height:42px; border-radius:50%; display:grid; place-items:center; background:var(--rc); color:white; font-family:var(--display); font-size:19px; margin-bottom:10px }
+    .person h3 { margin:0 0 3px; font-size:15px }
+    .person p { font-size:12px; margin:7px 0 0 }
+    table { width:100%; border-collapse:collapse; font-size:13px }
+    th { text-align:left; color:var(--muted); font-size:10px; text-transform:uppercase; letter-spacing:.08em }
+    th,td { padding:11px 9px; border-bottom:1px solid var(--line); vertical-align:top }
+    .news-head { display:flex; justify-content:space-between; gap:15px; align-items:center; flex-wrap:wrap }
+    .segmented { display:inline-flex; background:#eee7d9; border-radius:11px; padding:3px }
+    .segmented button { border:0; background:transparent; padding:7px 12px; border-radius:8px; font-size:12px; font-weight:700; color:#657174 }
+    .segmented button.active { background:var(--paper); color:var(--ocean); box-shadow:0 2px 7px rgba(30,50,45,.12) }
+    .notice { border-radius:12px; padding:11px 14px; font-size:12px; margin:15px 0; display:flex; gap:9px; align-items:flex-start }
+    .notice.warn { background:#fff2d5; color:#79500a; border:1px solid #ecd397 }
+    .notice.blue { background:#e6f0f5; color:#285d78; border:1px solid #c5dce8 }
+    .news-list { display:grid; gap:11px }
+    .news-item { border:1px solid var(--line); border-radius:14px; padding:16px; background:#fbf8f0 }
+    .news-item h3 { font-size:15px; margin:7px 0 5px }
+    .news-original { font-size:12px; color:var(--muted); font-style:italic }
+    .news-meta { display:flex; flex-wrap:wrap; gap:7px 13px; font-size:11px; color:var(--muted); margin-top:10px }
+    .compare-controls { display:grid; grid-template-columns:1fr auto 1fr; gap:14px; align-items:end; background:var(--paper); border:1px solid var(--line); padding:20px; border-radius:19px; margin-bottom:20px }
+    .compare-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px }
+    .compare-card { background:var(--paper); border:1px solid var(--line); border-radius:20px; overflow:hidden }
+    .compare-top { padding:25px; background:linear-gradient(125deg,var(--rc),var(--ocean-dark)); color:white }
+    .compare-top h2 { font-family:var(--display); font-size:32px; margin:8px 0 0 }
+    .compare-table { margin-top:18px; background:var(--paper); border:1px solid var(--line); border-radius:18px; overflow:auto }
+    .bar { height:7px; background:#e8e0d2; border-radius:9px; overflow:hidden; margin-top:6px }
+    .bar i { display:block; height:100%; background:var(--rc); border-radius:9px }
+    .method-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px }
+    .method-card { background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:23px }
+    .method-card .num { font-family:var(--display); color:var(--terra); font-size:35px }
+    .method-card h3 { margin:8px 0 }
+    .method-card p { color:var(--muted); font-size:14px }
+    .audit { background:var(--ocean-dark); color:white; border-radius:22px; padding:28px; margin:22px 0 }
+    .audit h2 { font-family:var(--display); font-size:30px }
+    .audit-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px }
+    .audit-box { background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.13); border-radius:13px; padding:15px }
+    .audit-box b { display:block; font-size:25px; color:#f2ca70 }
+    .audit-box span { font-size:11px; color:#c4d5d5 }
+    .footer { background:var(--ocean-dark); color:#d7e3e1; padding:48px 0 28px; margin-top:65px }
+    .footer-grid { display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:40px }
+    .footer h3 { color:white; font-family:var(--display); font-size:23px }
+    .footer a { color:#e8c66f; display:block; margin:7px 0; font-size:13px }
+    .footer p { font-size:13px; color:#afc4c4 }
+    .footer-bottom { border-top:1px solid rgba(255,255,255,.13); margin-top:32px; padding-top:20px; font-size:11px; color:#91aaaa; display:flex; justify-content:space-between; gap:15px }
+    .toast-stack { position:fixed; right:20px; bottom:20px; z-index:90; display:grid; gap:9px }
+    .toast { background:var(--ocean-dark); color:white; border-radius:13px; padding:13px 16px; box-shadow:var(--shadow); display:flex; align-items:center; gap:15px; font-size:13px; animation:toastIn .25s ease }
+    .toast button { border:0; background:#e9bd58; color:#24383b; border-radius:7px; padding:5px 9px; font-weight:800; font-size:11px }
+    @keyframes toastIn { from { transform:translateY(15px); opacity:0 } }
+    .search-dialog { position:fixed; inset:0; background:rgba(12,35,39,.58); backdrop-filter:blur(7px); z-index:80; display:none; place-items:start center; padding-top:13vh }
+    .search-dialog.open { display:grid }
+    .search-box { width:min(650px,calc(100% - 30px)); background:var(--paper); border-radius:20px; box-shadow:0 30px 90px rgba(0,0,0,.3); overflow:hidden }
+    .search-box input { border:0; border-bottom:1px solid var(--line); border-radius:0; padding:20px; font-size:18px }
+    .search-results { max-height:390px; overflow:auto; padding:9px }
+    .search-result { display:flex; align-items:center; gap:12px; padding:11px; border-radius:11px; text-decoration:none; color:var(--ink) }
+    .search-result:hover { background:#eaf0e9 }
+    .search-result .flag-sm { font-size:27px }
+    .search-result small { display:block; color:var(--muted) }
+    .reveal { opacity:0; transform:translateY(18px); transition:.6s ease }
+    .reveal.in { opacity:1; transform:none }
+    @media(max-width:1100px) {
+      .nav-links a:nth-child(n+5) { display:none }
+      .region-grid,.country-grid { grid-template-columns:repeat(3,1fr) }
+      .toolbar { grid-template-columns:2fr 1fr 1fr }
+      .quick-grid { grid-template-columns:repeat(3,1fr) }
+      .feature-grid { grid-template-columns:repeat(2,1fr) }
+    }
+    @media(max-width:800px) {
+      :root { --nav-h:66px }
+      .nav { padding:0 16px; gap:12px }
+      .nav-links { display:none; position:absolute; top:66px; left:0; right:0; background:var(--paper); border-bottom:1px solid var(--line); padding:12px; flex-direction:column; align-items:stretch }
+      .nav-links.open { display:flex }
+      .nav-links a:nth-child(n) { display:block }
+      .menu-btn { display:grid }
+      .brand small { display:none }
+      .hero-grid,.map-layout,.country-layout,.compare-grid,.footer-grid { grid-template-columns:1fr }
+      .hero-art { min-height:300px }
+      .orb { width:270px }
+      .stats,.audit-grid { grid-template-columns:repeat(2,1fr) }
+      .region-grid,.country-grid { grid-template-columns:repeat(2,1fr) }
+      .toc { position:static; max-height:none; display:flex; overflow:auto }
+      .toc a { white-space:nowrap }
+      .country-hero-grid { grid-template-columns:auto 1fr }
+      .hero-buttons { grid-column:1/-1 }
+      .people-grid,.method-grid { grid-template-columns:1fr }
+      .compare-controls { grid-template-columns:1fr }
+      .compare-controls .icon-btn { width:100% }
+      .section-head { align-items:start; flex-direction:column }
+    }
+    @media(max-width:520px) {
+      .wrap { width:min(100% - 26px,1380px) }
+      h1 { font-size:48px }
+      .region-grid,.country-grid,.feature-grid,.fact-grid { grid-template-columns:1fr }
+      .stats { grid-template-columns:1fr 1fr }
+      .toolbar { grid-template-columns:1fr 1fr }
+      .toolbar .field:first-child { grid-column:1/-1 }
+      .quick-grid { grid-template-columns:1fr 1fr }
+      .country-hero { padding:23px }
+      .hero-flag { font-size:52px }
+      .country-hero h1 { font-size:36px }
+      .tile { min-width:36px; height:36px; font-size:8px }
+      .tile-map { justify-content:start; overflow:auto; padding-bottom:10px }
+      .footer-bottom { flex-direction:column }
+    }
+    @media(prefers-reduced-motion:reduce) {
+      *,*::before,*::after { animation:none!important; scroll-behavior:auto!important; transition:none!important }
+      .reveal { opacity:1; transform:none }
+    }
+    @media print {
+      .nav,.toc,.hero-buttons,.star,.footer,.toast-stack { display:none!important }
+      main { padding-top:0 }
+      body { background:white }
+      .info-section { break-inside:avoid; box-shadow:none }
+    }
+  </style>
+</head>
+<body>
+<a class="skip" href="#main">Перейти к содержанию</a>
+<header class="nav">
+  <a class="brand" href="#/" aria-label="Атлас — на главную">
+    <span class="brand-mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="#fff" stroke-width="1.4"/><path d="M4 12h16M12 4c3 3 3 13 0 16M12 4c-3 3-3 13 0 16" stroke="#fff" stroke-width="1.2"/></svg>
+    </span>
+    <span><strong>Атлас</strong><small>образовательный справочник</small></span>
+  </a>
+  <nav class="nav-links" id="navLinks" aria-label="Основная навигация">
+    <a href="#/" data-route="home">Главная</a>
+    <a href="#/map" data-route="map">Карта</a>
+    <a href="#/countries" data-route="countries">Страны</a>
+    <a href="#/compare" data-route="compare">Сравнение</a>
+    <a href="#/favorites" data-route="favorites">Избранное</a>
+    <a href="#/methodology" data-route="methodology">Методология</a>
+    <a href="#/data" data-route="data">Данные</a>
+  </nav>
+  <div class="nav-actions">
+    <button class="icon-btn" id="searchOpen" aria-label="Поиск стран" title="Поиск (нажмите /)">⌕</button>
+    <button class="icon-btn menu-btn" id="menuBtn" aria-label="Открыть меню" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<main id="main" tabindex="-1"></main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h3>Атлас двух континентов</h3>
+        <p>Учебный справочник о государствах Африки и Латинской Америки. Справочные сведения отделены от новостных материалов; у проверяемых фактов указаны источники и даты.</p>
+      </div>
+      <div>
+        <h3>Разделы</h3>
+        <a href="#/map">Интерактивная карта</a>
+        <a href="#/countries">Все страны</a>
+        <a href="#/compare">Сравнение стран</a>
+        <a href="#/favorites">Избранные страны</a>
+      </div>
+      <div>
+        <h3>О проекте</h3>
+        <a href="#/methodology">Источники и методология</a>
+        <a href="#/data">Обновление данных</a>
+        <a href="https://unstats.un.org/unsd/methodology/m49/" target="_blank" rel="noopener">Регионы M49 ↗</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Образовательный некоммерческий проект · Нейтральный справочный формат</span>
+      <span>Срез данных: 15 ноября 2026 · Не является официальной государственной публикацией</span>
+    </div>
+  </div>
+</footer>
+
+<div class="search-dialog" id="searchDialog" role="dialog" aria-modal="true" aria-label="Поиск стран">
+  <div class="search-box">
+    <input id="globalSearch" type="search" placeholder="Страна, столица, регион или код…" autocomplete="off">
+    <div class="search-results" id="globalResults"></div>
+  </div>
+</div>
+<div class="toast-stack" id="toasts" aria-live="polite"></div>
+
+<script>
+"use strict";
+
+/*
+  Автономная версия проекта.
+  Сохраните файл как index.html. Для GitHub Pages дополнительных зависимостей не требуется.
+  Внешний новостной файл можно добавить позже по адресу ./data/news.json.
+  Если файл отсутствует, используется встроенная сохранённая подборка.
+*/
+
+const SNAPSHOT = "2026-11-15";
+const REGIONS = {
+  na:{name:"Северная Африка",color:"#bd5434",description:"Средиземноморское побережье, Сахара и долины Нила."},
+  wa:{name:"Западная Африка",color:"#b57b0c",description:"От Сахеля до Гвинейского залива: исторические торговые пути и культурное многообразие."},
+  ca:{name:"Центральная Африка",color:"#527b43",description:"Бассейн Конго, экваториальные леса и атлантическое побережье."},
+  ea:{name:"Восточная Африка",color:"#0d7e87",description:"Великие озёра, Африканский Рог и острова Индийского океана."},
+  sa:{name:"Южная Африка",color:"#79558d",description:"Капский регион, Калахари и побережья двух океанов."},
+  mx:{name:"Мексика и Центральная Америка",color:"#2c6ca5",description:"Перешеек между двумя Америкками и северные плато Мезоамерики."},
+  cb:{name:"Карибский бассейн",color:"#aa3e70",description:"Островные государства Больших и Малых Антильских островов."},
+  sam:{name:"Южная Америка",color:"#39745a",description:"Анды, Амазония, Ла-Плата и тихоокеанское побережье."}
+};
+
+// Компактный базовый справочник. Численность населения — округлённые учебные оценки,
+// требующие сверки с текущей таблицей ООН перед публичным обновлением.
+const RAW = [
+["dz","Алжир","Алжирская Народная Демократическая Республика","Алжир","na",2381741,46800000,"арабский, тамазигхт","динар","UTC+1","+213",".dz","полупрезидентская республика",2,0],
+["eg","Египет","Арабская Республика Египет","Каир","na",1001450,116500000,"арабский","фунт","UTC+2","+20",".eg","президентская республика",5,0],
+["ly","Ливия","Государство Ливия","Триполи","na",1759540,7400000,"арабский","динар","UTC+2","+218",".ly","переходная система",4,0],
+["ma","Марокко","Королевство Марокко","Рабат","na",446550,38100000,"арабский, амазигхский","дирхам","UTC+1","+212",".ma","парламентская монархия",1,0],
+["sd","Судан","Республика Судан","Хартум","na",1861484,50400000,"арабский, английский","фунт","UTC+2","+249",".sd","переходная система",6,1],
+["tn","Тунис","Тунисская Республика","Тунис","na",163610,12300000,"арабский","динар","UTC+1","+216",".tn","президентская республика",3,0],
+["bj","Бенин","Республика Бенин","Порто-Ново","wa",114763,14500000,"французский","франк КФА","UTC+1","+229",".bj","президентская республика",11,2],
+["bf","Буркина-Фасо","Буркина-Фасо","Уагадугу","wa",274200,23500000,"французский","франк КФА","UTC+0","+226",".bf","переходная система",8,2],
+["cv","Кабо-Верде","Республика Кабо-Верде","Прая","wa",4033,525000,"португальский","эскудо","UTC−1","+238",".cv","полупрезидентская республика",0,3],
+["ci","Кот-д’Ивуар","Республика Кот-д’Ивуар","Ямусукро","wa",322463,31900000,"французский","франк КФА","UTC+0","+225",".ci","президентская республика",7,2],
+["gm","Гамбия","Республика Гамбия","Банжул","wa",11295,2760000,"английский","даласи","UTC+0","+220",".gm","президентская республика",2,2],
+["gh","Гана","Республика Гана","Аккра","wa",238533,34400000,"английский","седи","UTC+0","+233",".gh","президентская республика",9,2],
+["gn","Гвинея","Гвинейская Республика","Конакри","wa",245857,14800000,"французский","франк","UTC+0","+224",".gn","переходная система",4,2],
+["gw","Гвинея-Бисау","Республика Гвинея-Бисау","Бисау","wa",36125,2200000,"португальский","франк КФА","UTC+0","+245",".gw","полупрезидентская республика",3,2],
+["lr","Либерия","Республика Либерия","Монровия","wa",111369,5600000,"английский","доллар","UTC+0","+231",".lr","президентская республика",6,2],
+["ml","Мали","Республика Мали","Бамако","wa",1240192,24500000,"французский","франк КФА","UTC+0","+223",".ml","переходная система",3,1],
+["mr","Мавритания","Исламская Республика Мавритания","Нуакшот","wa",1030700,5200000,"арабский","угия","UTC+0","+222",".mr","президентская республика",2,1],
+["ne","Нигер","Республика Нигер","Ниамей","wa",1267000,27000000,"французский","франк КФА","UTC+1","+227",".ne","переходная система",4,1],
+["ng","Нигерия","Федеративная Республика Нигерия","Абуджа","wa",923768,232700000,"английский","найра","UTC+1","+234",".ng","федеративная президентская республика",12,2],
+["sn","Сенегал","Республика Сенегал","Дакар","wa",196722,18500000,"французский","франк КФА","UTC+0","+221",".sn","президентская республика",1,2],
+["sl","Сьерра-Леоне","Республика Сьерра-Леоне","Фритаун","wa",71740,8600000,"английский","леоне","UTC+0","+232",".sl","президентская республика",5,2],
+["tg","Того","Тоголезская Республика","Ломе","wa",56785,9500000,"французский","франк КФА","UTC+0","+228",".tg","президентская республика",10,2],
+["ao","Ангола","Республика Ангола","Луанда","ca",1246700,37900000,"португальский","кванза","UTC+1","+244",".ao","президентская республика",12,4],
+["cm","Камерун","Республика Камерун","Яунде","ca",475442,29100000,"французский, английский","франк КФА","UTC+1","+237",".cm","президентская республика",13,2],
+["cf","ЦАР","Центральноафриканская Республика","Банги","ca",622984,5300000,"французский, санго","франк КФА","UTC+1","+236",".cf","президентская республика",14,2],
+["td","Чад","Республика Чад","Нджамена","ca",1284000,20300000,"французский, арабский","франк КФА","UTC+1","+235",".td","переходная система",5,1],
+["cg","Республика Конго","Республика Конго","Браззавиль","ca",342000,6300000,"французский","франк КФА","UTC+1","+242",".cg","президентская республика",14,3],
+["cd","ДР Конго","Демократическая Республика Конго","Киншаса","ca",2344858,109300000,"французский","франк","UTC+1/+2","+243",".cd","полупрезидентская республика",15,3],
+["gq","Экваториальная Гвинея","Республика Экваториальная Гвинея","Малабо","ca",28051,1900000,"испанский, французский, португальский","франк КФА","UTC+1","+240",".gq","президентская республика",12,3],
+["ga","Габон","Габонская Республика","Либревиль","ca",267668,2500000,"французский","франк КФА","UTC+1","+241",".ga","переходная система",13,3],
+["st","Сан-Томе и Принсипи","Демократическая Республика Сан-Томе и Принсипи","Сан-Томе","ca",964,236000,"португальский","добры","UTC+0","+239",".st","полупрезидентская республика",11,3],
+["bi","Бурунди","Республика Бурунди","Гитега","ea",27834,14000000,"кирунди, французский, английский","франк","UTC+2","+257",".bi","президентская республика",16,4],
+["km","Коморы","Союз Коморских Островов","Морони","ea",2235,866000,"коморский, арабский, французский","франк","UTC+3","+269",".km","федеративная президентская республика",18,5],
+["dj","Джибути","Республика Джибути","Джибути","ea",23200,1170000,"французский, арабский","франк","UTC+3","+253",".dj","президентская республика",17,2],
+["er","Эритрея","Государство Эритрея","Асмэра","ea",117600,3540000,"тигринья, арабский, английский","накфа","UTC+3","+291",".er","однопартийная президентская республика",7,1],
+["sz","Эсватини","Королевство Эсватини","Мбабане","sa",17364,1240000,"свати, английский","лилангени","UTC+2","+268",".sz","абсолютная монархия",15,6],
+["et","Эфиопия","Федеративная Демократическая Республика Эфиопия","Аддис-Абеба","ea",1104300,132100000,"амхарский","быр","UTC+3","+251",".et","федеративная парламентская республика",16,2],
+["ke","Кения","Республика Кения","Найроби","ea",580367,56400000,"суахили, английский","шиллинг","UTC+3","+254",".ke","президентская республика",17,3],
+["mg","Мадагаскар","Республика Мадагаскар","Антананариву","ea",587041,32000000,"малагасийский, французский","ариари","UTC+3","+261",".mg","полупрезидентская республика",18,6],
+["mw","Малави","Республика Малави","Лилонгве","ea",118484,21700000,"английский, чичева","квача","UTC+2","+265",".mw","президентская республика",16,5],
+["mu","Маврикий","Республика Маврикий","Порт-Луи","ea",2040,1270000,"английский, французский","рупия","UTC+4","+230",".mu","парламентская республика",20,6],
+["mz","Мозамбик","Республика Мозамбик","Мапуту","ea",801590,34600000,"португальский","метикал","UTC+2","+258",".mz","президентская республика",16,6],
+["rw","Руанда","Республика Руанда","Кигали","ea",26338,14300000,"киньяруанда, английский, французский, суахили","франк","UTC+2","+250",".rw","президентская республика",16,3],
+["sc","Сейшельские Острова","Республика Сейшельские Острова","Виктория","ea",452,130000,"английский, французский, сейшельский креольский","рупия","UTC+4","+248",".sc","президентская республика",20,4],
+["so","Сомали","Федеративная Республика Сомали","Могадишо","ea",637657,19000000,"сомалийский, арабский","шиллинг","UTC+3","+252",".so","федеративная парламентская республика",18,3],
+["ss","Южный Судан","Республика Южный Судан","Джуба","ea",619745,11900000,"английский","фунт","UTC+2","+211",".ss","переходная президентская система",15,2],
+["tz","Танзания","Объединённая Республика Танзания","Додома","ea",945087,68600000,"суахили, английский","шиллинг","UTC+3","+255",".tz","президентская республика",17,4],
+["ug","Уганда","Республика Уганда","Кампала","ea",241550,50000000,"английский, суахили","шиллинг","UTC+3","+256",".ug","президентская республика",16,3],
+["zm","Замбия","Республика Замбия","Лусака","ea",752612,21300000,"английский","квача","UTC+2","+260",".zm","президентская республика",15,5],
+["zw","Зимбабве","Республика Зимбабве","Хараре","ea",390757,16600000,"английский, шона, ндебеле","разные валюты","UTC+2","+263",".zw","президентская республика",15,6],
+["bw","Ботсвана","Республика Ботсвана","Габороне","sa",581730,2520000,"английский, тсвана","пула","UTC+2","+267",".bw","парламентская республика",14,6],
+["ls","Лесото","Королевство Лесото","Масеру","sa",30355,2330000,"сесото, английский","лоти","UTC+2","+266",".ls","парламентская монархия",14,7],
+["na","Намибия","Республика Намибия","Виндхук","sa",824292,3030000,"английский","доллар","UTC+2","+264",".na","полупрезидентская республика",12,6],
+["za","ЮАР","Южно-Африканская Республика","Претория","sa",1221037,64000000,"12 официальных языков","рэнд","UTC+2","+27",".za","парламентская республика",13,7],
+["mx","Мексика","Мексиканские Соединённые Штаты","Мехико","mx",1964375,130900000,"испанский и национальные языки","песо","UTC−6/−8","+52",".mx","федеративная президентская республика",1,0],
+["bz","Белиз","Белиз","Бельмопан","mx",22966,417000,"английский","доллар","UTC−6","+501",".bz","парламентская монархия",3,1],
+["cr","Коста-Рика","Республика Коста-Рика","Сан-Хосе","mx",51100,5130000,"испанский","колон","UTC−6","+506",".cr","президентская республика",4,3],
+["sv","Сальвадор","Республика Эль-Сальвадор","Сан-Сальвадор","mx",21041,6340000,"испанский","доллар США","UTC−6","+503",".sv","президентская республика",2,2],
+["gt","Гватемала","Республика Гватемала","Гватемала","mx",108889,18400000,"испанский","кетсаль","UTC−6","+502",".gt","президентская республика",2,1],
+["hn","Гондурас","Республика Гондурас","Тегусигальпа","mx",112492,10800000,"испанский","лемпира","UTC−6","+504",".hn","президентская республика",3,2],
+["ni","Никарагуа","Республика Никарагуа","Манагуа","mx",130373,6920000,"испанский","кордоба","UTC−6","+505",".ni","президентская республика",4,2],
+["pa","Панама","Республика Панама","Панама","mx",75417,4520000,"испанский","бальбоа, доллар США","UTC−5","+507",".pa","президентская республика",5,3],
+["ag","Антигуа и Барбуда","Антигуа и Барбуда","Сент-Джонс","cb",442,94000,"английский","восточно-карибский доллар","UTC−4","+1-268",".ag","парламентская монархия",9,0],
+["bs","Багамские Острова","Содружество Багамских Островов","Нассау","cb",13880,401000,"английский","доллар","UTC−5","+1-242",".bs","парламентская монархия",5,0],
+["bb","Барбадос","Барбадос","Бриджтаун","cb",430,282000,"английский","доллар","UTC−4","+1-246",".bb","парламентская республика",9,2],
+["cu","Куба","Республика Куба","Гавана","cb",109884,10900000,"испанский","песо","UTC−5","+53",".cu","социалистическая республика",4,0],
+["dm","Доминика","Содружество Доминики","Розо","cb",751,66000,"английский","восточно-карибский доллар","UTC−4","+1-767",".dm","парламентская республика",9,1],
+["do","Доминиканская Республика","Доминиканская Республика","Санто-Доминго","cb",48671,11400000,"испанский","песо","UTC−4","+1-809",".do","президентская республика",7,1],
+["gd","Гренада","Гренада","Сент-Джорджес","cb",344,117000,"английский","восточно-карибский доллар","UTC−4","+1-473",".gd","парламентская монархия",9,3],
+["ht","Гаити","Республика Гаити","Порт-о-Пренс","cb",27750,11800000,"гаитянский креольский, французский","гурд","UTC−5","+509",".ht","переходная система",6,1],
+["jm","Ямайка","Ямайка","Кингстон","cb",10991,2840000,"английский","доллар","UTC−5","+1-876",".jm","парламентская монархия",5,1],
+["kn","Сент-Китс и Невис","Сент-Китс и Невис","Бастер","cb",261,47000,"английский","восточно-карибский доллар","UTC−4","+1-869",".kn","парламентская монархия",8,1],
+["lc","Сент-Люсия","Сент-Люсия","Кастри","cb",616,180000,"английский","восточно-карибский доллар","UTC−4","+1-758",".lc","парламентская монархия",9,2],
+["vc","Сент-Винсент и Гренадины","Сент-Винсент и Гренадины","Кингстаун","cb",389,100000,"английский","восточно-карибский доллар","UTC−4","+1-784",".vc","парламентская монархия",8,2],
+["tt","Тринидад и Тобаго","Республика Тринидад и Тобаго","Порт-оф-Спейн","cb",5130,1510000,"английский","доллар","UTC−4","+1-868",".tt","парламентская республика",8,3],
+["ar","Аргентина","Аргентинская Республика","Буэнос-Айрес","sam",2780400,45700000,"испанский","песо","UTC−3","+54",".ar","федеративная президентская республика",5,8],
+["bo","Боливия","Многонациональное Государство Боливия","Сукре","sam",1098581,12400000,"испанский и языки коренных народов","боливиано","UTC−4","+591",".bo","президентская республика",5,6],
+["br","Бразилия","Федеративная Республика Бразилия","Бразилиа","sam",8515767,212000000,"португальский","реал","UTC−3/−5","+55",".br","федеративная президентская республика",7,6],
+["cl","Чили","Республика Чили","Сантьяго","sam",756102,19800000,"испанский","песо","UTC−4/−6","+56",".cl","президентская республика",4,8],
+["co","Колумбия","Республика Колумбия","Богота","sam",1141748,52900000,"испанский","песо","UTC−5","+57",".co","президентская республика",4,4],
+["ec","Эквадор","Республика Эквадор","Кито","sam",276841,18100000,"испанский","доллар США","UTC−5/−6","+593",".ec","президентская республика",3,5],
+["gy","Гайана","Кооперативная Республика Гайана","Джорджтаун","sam",214969,831000,"английский","доллар","UTC−4","+592",".gy","президентская республика",7,4],
+["py","Парагвай","Республика Парагвай","Асунсьон","sam",406752,6930000,"испанский, гуарани","гуарани","UTC−4","+595",".py","президентская республика",6,7],
+["pe","Перу","Республика Перу","Лима","sam",1285216,34200000,"испанский, кечуа, аймара","соль","UTC−5","+51",".pe","президентская республика",4,6],
+["sr","Суринам","Республика Суринам","Парамарибо","sam",163820,634000,"нидерландский","доллар","UTC−3","+597",".sr","президентская республика",8,4],
+["uy","Уругвай","Восточная Республика Уругвай","Монтевидео","sam",176215,3390000,"испанский","песо","UTC−3","+598",".uy","президентская республика",7,8],
+["ve","Венесуэла","Боливарианская Республика Венесуэла","Каракас","sam",916445,28400000,"испанский","боливар","UTC−4","+58",".ve","федеративная президентская республика",6,4]
+];
+
+const FIELDS = ["id","name","official","capital","region","area","population","languages","currency","timezone","phone","tld","government","x","y"];
+const BASE = RAW.map(row => Object.fromEntries(FIELDS.map((k,i)=>[k,row[i]])));
+const STORAGE = {
+  get(key,fallback) { try { return JSON.parse(localStorage.getItem("atlas:"+key)) ?? fallback } catch { return fallback } },
+  set(key,value) { try { localStorage.setItem("atlas:"+key,JSON.stringify(value)) } catch {} }
+};
+let imported = STORAGE.get("imported",null);
+let countries = Array.isArray(imported) && imported.length ? imported : BASE;
+let favorites = new Set(STORAGE.get("favorites",[]));
+let notes = STORAGE.get("notes",{});
+let comparePair = STORAGE.get("compare",["eg","br"]);
+let newsPeriod = "week";
+let newsMode = "saved";
+let externalNews = null;
+
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const esc = s => String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
+const fmt = n => new Intl.NumberFormat("ru-RU").format(n);
+const dateRu = s => s ? new Date(s+"T12:00:00").toLocaleDateString("ru-RU",{day:"numeric",month:"long",year:"numeric"}) : "не указана";
+const byId = id => countries.find(c=>c.id===id);
+const regionCount = id => countries.filter(c=>c.region===id).length;
+const flag = id => id.toUpperCase().replace(/./g,c=>String.fromCodePoint(127397+c.charCodeAt()));
+const rc = c => REGIONS[c.region]?.color || "#0c5961";
+const badge = status => `<span class="badge ${status}">${({verified:"подтверждено",review:"требует проверки",stale:"устарело",info:"справочно"})[status]||status}</span>`;
+const source = (name,url,date=SNAPSHOT,status="verified") => `<div class="source-line">${badge(status)}<span>Источник: <a href="${esc(url)}" target="_blank" rel="noopener">${esc(name)} ↗</a></span><span>Проверено: ${dateRu(date)}</span></div>`;
+const section = (id,title,body,src="") => `<section class="info-section reveal" id="${id}"><h2>${title}</h2>${body}${src}</section>`;
+const facts = arr => `<div class="fact-grid">${arr.map(([k,v])=>`<div class="fact"><small>${esc(k)}</small><b>${esc(v)}</b></div>`).join("")}</div>`;
+const timeline = arr => `<div class="timeline">${arr.map(([d,t])=>`<div class="timeline-item"><b>${esc(d)}</b><p>${esc(t)}</p></div>`).join("")}</div>`;
+const people = arr => `<div class="people-grid">${arr.map(p=>`<article class="person"><div class="avatar">${esc(p.name[0])}</div><h3>${esc(p.name)}</h3><div class="meta">${esc(p.years)} · ${esc(p.field)}</div><p>${esc(p.note)}</p></article>`).join("")}</div>`;
+
+const PROFILES = {
+eg:{
+  intro:"Египет связывает северо-восточную Африку с Ближним Востоком. Большинство населения живёт вдоль Нила и в его дельте.",
+  geography:"Территория охватывает нижнюю долину и дельту Нила, Ливийскую и Аравийскую пустыни, Синайский полуостров. Климат преимущественно пустынный; земледелие зависит от нильского водоснабжения.",
+  geoFacts:[["Положение","Северо-восток Африки и Синай"],["Границы","Ливия, Судан, Израиль и сектор Газа"],["Крупнейшая река","Нил"],["Природные зоны","Пустыни, нильская долина, побережья"],["Ресурсы","Природный газ, золото, фосфаты"],["Охраняемые территории","Рас-Мохаммед, Вади-эль-Гемаль"]],
+  society:"Население быстро растёт и концентрируется в Каирской агломерации, дельте Нила и городах Суэцкого канала. Арабский — официальный язык; коптская христианская община является частью исторического культурного ландшафта.",
+  societyFacts:[["Оценка населения","около 116,5 млн · требует сверки"],["Урбанизация","около 43% · оценка Всемирного банка"],["Официальный язык","арабский"],["Крупнейшая агломерация","Большой Каир"]],
+  politics:"Конституция 2014 года с последующими поправками определяет республиканскую систему с сильной президентской властью и однопалатным парламентом. Страна разделена на мухафазы.",
+  politicsFacts:[["Конституция","2014, с поправками"],["Парламент","Палата представителей"],["Административные единицы","мухафазы"],["Столица","Каир"]],
+  symbols:[["Флаг","Красная, белая и чёрная горизонтальные полосы с золотым орлом Саладина."],["Герб","Орёл Саладина; современная версия связана с республиканской геральдикой."],["Гимн","«Bilady, Bilady, Bilady»; музыка Сайеда Дарвиша."]],
+  figures:[
+    {name:"Таха Хусейн",years:"1889–1973",field:"литература",note:"Писатель и интеллектуал, повлиявший на арабскую литературную критику и дискуссии об образовании."},
+    {name:"Нагиб Махфуз",years:"1911–2006",field:"литература",note:"Лауреат Нобелевской премии по литературе 1988 года; известен романами о Каире."},
+    {name:"Мохаммед Салах",years:"род. 1992",field:"спорт",note:"Футболист, один из наиболее узнаваемых современных спортсменов страны."}
+  ],
+  officials:[
+    ["Президент","Абдель Фаттах ас-Сиси","2014","https://www.presidency.eg/"],
+    ["Премьер-министр","Мустафа Мадбули","2018","https://www.shorouknews.com/"],
+    ["Министр иностранных дел","Бадр Абделатти","2024","https://www.mfa.gov.eg/"]
+  ],
+  history:[["ок. 3100 до н. э.","Формирование раннего централизованного государства в долине Нила."],["332 до н. э.","Начало эллинистического периода после завоевания Александра Македонского."],["1922","Провозглашение независимости Египта при сохранении британского влияния."],["1952–1953","Революция и провозглашение республики."],["1979","Подписание египетско-израильского мирного договора."]],
+  economy:"Экономика опирается на услуги, промышленность, сельское хозяйство, добычу газа, туризм и доходы от Суэцкого канала. Среди вызовов — инфляция, занятость и зависимость от импорта продовольствия.",
+  economyFacts:[["Основные отрасли","Услуги, строительство, текстиль, пищевая промышленность"],["Экспорт","Газ, нефтепродукты, удобрения, текстиль"],["Инфраструктура","Суэцкий канал, порты Александрии и Порт-Саида"],["Туризм","Каир, Гиза, Луксор, Асуан, Красное море"]],
+  international:"Египет состоит в ООН, Африканском союзе и Лиге арабских государств. Дипломатические отношения СССР с Египтом были установлены в 1943 году; Россия продолжает эти отношения.",
+  russia:[["Дипломатические отношения","1943, с СССР; продолжены с Российской Федерацией"],["Представительства","Посольство России в Каире; посольство Египта в Москве"],["Связи","Торговля, туризм, образование, энергетика"],["Проекты","Сотрудничество в атомной энергетике — по официальным сообщениям сторон"]],
+  security:"Справочные источники отмечают ограничения поездок в отдельные районы Северного Синая. Рекомендуется сверять актуальные официальные рекомендации МИД России и其他国家ных ведомств перед поездкой.",
+  securityFacts:[["Природные риски","Жара, песчаные бури, дефицит воды"],["Официальные рекомендации","МИД России и ведомства страны пребывания"],["Статус раздела","Требует регулярной сверки"]],
+  culture:"Кухня сочетает нильские земледельческие традиции и средиземноморские влияния. Всемирное наследие включает древние мемфисские некрополи и памятники Фив. Музыка, кино и литература страны influential в арабском мире.",
+  cultureFacts:[["Кухня","Кушари, фуль, таамия"],["Наследие ЮНЕСКО","Мемфис и некрополи; Фивы; Абу-Мена"],["Музыка","Арабская классическая традиция и современная эстрада"],["Спорт","Футбол, сквош, гандбол"]]
+},
+ng:{
+  intro:"Нигерия — наиболее населённая страна Африки, расположенная у Гвинейского залива. Федерация объединяет разнообразные языковые и культурные сообщества.",
+  geography:"Ландшафт меняется от мангровых побережий и тропических лесов на юге до саванн и сухих равнин на севере. Важнейшие водные системы — Нигер и Бенуэ.",
+  geoFacts:[["Положение","Запад Африки, Гвинейский залив"],["Крупные реки","Нигер и Бенуэ"],["Природные зоны","Мангры, леса, саванны"],["Ресурсы","Нефть, газ, олово, известняк"],["Крупный город","Лагос"],["Охраняемые территории","Янкари, Кросс-Ривер"]],
+  society:"Английский используется в управлении и образовании; хауса, йоруба, игбо и многие другие языки имеют широкое распространение. Население молодое, урбанизация идёт быстрыми темпами.",
+  societyFacts:[["Оценка населения","около 232,7 млн · требует сверки"],["Официальный язык","английский"],["Крупные языки","хауса, йоруба, игбо"],["Религиозные сообщества","исламские и христианские"]],
+  politics:"Федеративная президентская республика. Конституция 1999 года положила начало Четвёртой республике. Федерация включает 36 штатов и Федеральную столичную территорию.",
+  politicsFacts:[["Конституция","1999"],["Парламент","Сенат и Палата представителей"],["Штаты","36 + столичная территория"],["Выборы","Всеобщее избирательное право"]],
+  symbols:[["Флаг","Две зелёные полосы и белая центральная полоса."],["Герб","Чёрный щит с белым вилообразным крестом, орёл и две лошади."],["Гимн","«Nigeria, We Hail Thee»; возвращён в 2024 году."]],
+  figures:[
+    {name:"Чинуа Ачебе",years:"1930–2013",field:"литература",note:"Автор романа «Things Fall Apart», одного из наиболее читаемых произведений африканской литературы."},
+    {name:"Воле Шойинка",years:"род. 1934",field:"литература",note:"Драматург и лауреат Нобелевской премии по литературе 1986 года."},
+    {name:"Фела Кути",years:"1938–1997",field:"музыка",note:"Создатель афробита, оказавший значительное влияние на мировую музыку."}
+  ],
+  officials:[
+    ["Президент","Бола Тинубу","2023","https://statehouse.gov.ng/"],
+    ["Глава правительства","Президент исполняет функции главы правительства","2023","https://statehouse.gov.ng/"],
+    ["Министр иностранных дел","Юсуф Туггар","2023","https://mfa.gov.ng/"]
+  ],
+  history:[["XI–XVI века","Государства хауса, Бенинское царство и другие политические образования."],["1914","Объединение британских протекторатов Нигерии."],["1960","Независимость."],["1999","Возвращение к гражданскому конституционному правлению."],["2024","Возвращение прежнего национального гимна."]],
+  economy:"Крупные сектора — нефть и газ, услуги, телекоммуникации, киноиндустрия, сельское хозяйство и торговля. Экономика чувствительна к мировым ценам на энергоносители.",
+  economyFacts:[["Экспорт","Нефть, газ, удобрения"],["Услуги","Телекоммуникации, финансы, креативные индустрии"],["Сельское хозяйство","Кассава, рис, какао, арахис"],["Вызовы","Инфраструктура, энергоснабжение, инфляция"]],
+  international:"Член ООН, Африканского союза, ЭКОВАС и ОПЕК. Нигерия играет заметную роль в региональной дипломатии Западной Африки.",
+  russia:[["Дипломатические отношения","1961, с СССР"],["Представительства","Посольства в Москве и Абудже"],["Связи","Торговля, образование, энергетика"],["Статус","Исторические и современные контакты"]],
+  security:"Ситуация различается по штатам. Официальные источники сообщают о рисках преступности, похищений и межобщинных столкновений в отдельных районах; формулировки и даты следует регулярно сверять.",
+  securityFacts:[["Природные риски","Наводнения, эрозия, жара"],["Региональные различия","Высокие"],["Рекомендации","Официальные сообщения МИД и местных властей"],["Статус","Требует регулярной сверки"]],
+  culture:"Нигерийская музыка и кино имеют международную аудиторию. Кухня включает джоллоф-рис, суп эгуси и блюда из ямса. Сукуйи и другие традиции отражают разнообразие регионов.",
+  cultureFacts:[["Кухня","Джоллоф, эгуси, суя"],["Музыка","Афробит, афробитс, хайлайф"],["Кино","Нолливуд"],["Наследие ЮНЕСКО","Культурный ландшафт Сукур"]]
+},
+cm:{
+  intro:"Камерун часто называют «Африкой в миниатюре» благодаря разнообразию природных зон и языковых сообществ. Страна имеет французское и английское административно-правовое наследие.",
+  geography:"От сахельских равнин севера до экваториальных лесов юга, вулканического массива Камерун и атлантического побережья.",
+  geoFacts:[["Высшая точка","Гора Камерун, около 4 040 м"],["Природные зоны","Сахель, саванна, горные леса, экваториальный лес"],["Ресурсы","Нефть, газ, бокситы, лес"],["Крупная река","Санaga"],["Побережье","Гвинейский залив"],["Охраняемые территории","Ваза, Джа (частично регион)"]],
+  society:"Французский и английский — официальные языки. По стране распространены многочисленные местные языки. Городское население растёт, особенно в Дуале и Яунде.",
+  societyFacts:[["Оценка населения","около 29,1 млн · требует сверки"],["Официальные языки","французский и английский"],["Крупнейший город","Дуала"],["Столица","Яунде"]],
+  politics:"Президентская республика с двухпалатным парламентом. Административно страна делится на 10 регионов.",
+  politicsFacts:[["Конституция","1972, существенно изменена в 1996"],["Парламент","Национальное собрание и Сенат"],["Регионы","10"],["Столица","Яунде"]],
+  symbols:[["Флаг","Вертикальные зелёная, красная и жёлтая полосы с золотой звездой."],["Герб","Щит с картой страны, звезда и весы; девиз «Paix – Travail – Patrie»."],["Гимн","«Chant de Ralliement»."]],
+  figures:[
+    {name:"Маню Ди Бенга",years:"1932–2024",field:"музыка",note:"Музыкант, популяризатор камерунского макуссии и саксофонной традиции."},
+    {name:"Самюэль Это’о",years:"род. 1981",field:"спорт",note:"Один из наиболее титулованных африканских футболистов."},
+    {name:"Фердинанд Ойоно",years:"1929–2010",field:"литература",note:"Писатель и дипломат, автор произведений о колониальном обществе."}
+  ],
+  officials:[
+    ["Президент","Поль Бия","1982","https://www.prc.cm/"],
+    ["Премьер-министр","Жозеф Дион Нгут","2019","https://www.spm.gov.cm/"],
+    ["Министр внешних сношений","Лежён Мбелла Мбелла","2015","https://www.diplomatie.cm/"]
+  ],
+  history:[["1884","Начало германского колониального периода."],["1960","Независимость французской части Камеруна."],["1961","Объединение с частью британского Камеруна."],["1972","Формирование унитарного государства."],["1996","Конституционные изменения, закрепившие региональное деление."]],
+  economy:"Сельское хозяйство, лесная промышленность, нефть, услуги и портовая логистика формируют основу экономики. Дуала — главный экономический центр и порт.",
+  economyFacts:[["Экспорт","Нефть, какао, кофе, древесина, хлопок"],["Порт","Дуала"],["Сельское хозяйство","Какао, кофе, бананы, хлопок"],["Вызовы","Инфраструктура, региональная связанность"]],
+  international:"Член ООН, Африканского союза и ЭКОЦАС. Участвует в региональных организациях Центральной Африки.",
+  russia:[["Дипломатические отношения","1964, с СССР"],["Представительства","Посольства в Москве и Яунде"],["Связи","Образование, торговля, техническое сотрудничество"],["Статус","Сверять по сайтам МИД"]],
+  security:"В отдельных приграничных и западных регионах действуют повышенные риски. Раздел должен содержать только нейтральные ссылки на официальные рекомендации без описания графических подробностей.",
+  securityFacts:[["Природные риски","Наводнения, оползни, вулканическая активность"],["Рекомендации","МИД России и официальные местные источники"],["Статус","Регулярная сверка обязательна"],["Формат","Только фактические сводки"]],
+  culture:"Музыкальные стили макусси и бикутси известны далеко за пределами страны. Кухня использует маниок, плантаны, арахис и рыбу. Футбол занимает важное место в общественной жизни.",
+  cultureFacts:[["Кухня","Ндоле, фуфу, блюда из плантанов"],["Музыка","Макусси, бикутси"],["Спорт","Футбол"],["Языки","Многочисленные местные языки"]]
+},
+ke:{
+  intro:"Кения расположена в Восточной Африке на экваторе и имеет выход к Индийскому океану. Страна известна саваннами, Великими озёрами и технологическим сектором Найроби.",
+  geography:"Рельеф включает прибрежные равнины, центральное нагорье, рифтовую долину и засушливые северные территории. Часть бассейна озера Виктория находится на западе страны.",
+  geoFacts:[["Высшая точка","Гора Кения, 5 199 м"],["Крупное озеро","Виктория, общая часть"],["Природные зоны","Саванны, нагорья, полупустыни"],["Ресурсы","Геотермальная энергия, плодородные почвы"],["Охраняемые территории","Масаи-Мара, Amboseli, Цаво"],["Побережье","Индийский океан"]],
+  society:"Суахили и английский — официальные языки. Население включает многие этнолингвистические сообщества. Найроби и Момбаса — главные городские центры.",
+  societyFacts:[["Оценка населения","около 56,4 млн · требует сверки"],["Официальные языки","суахили и английский"],["Крупнейший город","Найроби"],["Урбанизация","Растёт, требует сверки по ВБ"]],
+  politics:"Конституция 2010 года учредила президентскую республику с двухпалатным парламентом и 47 округами, обладающими собственными органами управления.",
+  politicsFacts:[["Конституция","2010"],["Парламент","Национальное собрание и Сенат"],["Округа","47"],["Деволюция","Передача полномочий округам"]],
+  symbols:[["Флаг","Чёрная, красная и зелёная полосы с белыми кантами, щит и копья."],["Герб","Щит и львы; девиз «Harambee»."],["Гимн","«Ee Mungu Nguvu Yetu»."]],
+  figures:[
+    {name:"Джомо Кениата",years:"ок. 1897–1978",field:"государственная деятельность",note:"Первый президент независимой Кении."},
+    {name:"Вангари Маатаи",years:"1940–2011",field:"экология",note:"Основательница Green Belt Movement, лауреат Нобелевской премии мира 2004 года."},
+    {name:"Элиуд Кипчоге",years:"род. 1984",field:"спорт",note:"Марафонский бегун, двукратный олимпийский чемпион на дистанции 1500? нет — марафон."}
+  ],
+  officials:[
+    ["Президент","Уильям Руто","2022","https://www.president.go.ke/"],
+    ["Глава правительства","Президент исполняет функции главы правительства","2022","https://www.president.go.ke/"],
+    ["Премьер-кабинет-секретарь, иностранные дела","Мусалия Мудавади","2022","https://mfa.go.ke/"]
+  ],
+  history:[["1895","Формирование британского протектората Восточной Африки."],["1920","Колониальный статус Кении."],["1963","Независимость."],["2010","Принятие новой конституции."],["2013","Запуск системы окружного управления."]],
+  economy:"Сельское хозяйство, чай, кофе, садоводство, туризм, транспорт, финансовые услуги и информационные технологии — ключевые сектора. Геотермальная энергетика играет заметную роль.",
+  economyFacts:[["Экспорт","Чай, кофе, цветы, овощи"],["Энергетика","Геотермальные и гидроэлектростанции"],["Услуги","Финансы, связь, мобильные платежи"],["Туризм","Сафари, побережье, деловой туризм"]],
+  international:"Член ООН, Африканского союза, Восточноафриканского сообщества и Содружества. Найроби hosts международные учреждения, включая офис ООН.",
+  russia:[["Дипломатические отношения","1963, с СССР"],["Представительства","Посольства в Москве и Найроби"],["Связи","Образование, торговля, техническое сотрудничество"],["Статус","Сверять по официальным сайтам"]],
+  security:"Риски различаются по округам; официальные ведомства публикуют рекомендации для поездок. Природные риски включают засухи и наводнения.",
+  securityFacts:[["Природные риски","Засухи, ливневые наводнения"],["Рекомендации","Официальные туристические и консульские сведения"],["Статус","Требует регулярной сверки"],["Подход","Без сенсационных формулировок"]],
+  culture:"Кения известна беговыми традициями, музыкой бенга и разнообразием кухонь. Угали, сукума-вики и чапати широко распространены. Суахилийское побережье имеет собственное историческое наследие.",
+  cultureFacts:[["Кухня","Угали, сукума-вики, ньяма чома"],["Спорт","Лёгкая атлетика, регби"],["Музыка","Бенга, современные городские жанры"],["Наследие ЮНЕСКО","Ламу, священные леса Миджикенда, озёрная система Кении"]]
+},
+za:{
+  intro:"Южно-Африканская Республика находится на южной оконечности континента. Страна имеет три столичные функции, распределённые между Преторией, Кейптауном и Блумфонтейном.",
+  geography:"Побережья Атлантического и Индийского океанов, внутреннее плато, драконовы горы и капские флористические области определяют природное разнообразие.",
+  geoFacts:[["Столицы","Претория, Кейптаун, Блумфонтейн"],["Высшая точка","Мафadi, 3 450 м"],["Природные зоны","Финбош, саванна, полупустыня"],["Ресурсы","Платина, уголь, железная руда, золото"],["Охраняемые территории","Национальный парк Крюгера"],["Океаны","Атлантический и Индийский"]],
+  society:"Конституция признаёт ряд официальных языков, включая зулу, коса, африкаанс, английский и южноафриканский жестовый язык. Общество формировалось под влиянием коренных народов, колониальной истории и миграций.",
+  societyFacts:[["Оценка населения","около 64 млн · требует сверки"],["Официальные языки","12"],["Крупнейший город","Йоханнесбург"],["Столичная функция","Административная — Претория"]],
+  politics:"Парламентская республика: президент избирается Национальной ассамблеей. Конституция 1996 года закрепляет права и провинциальную систему.",
+  politicsFacts:[["Конституция","1996"],["Парламент","Национальная ассамблея и Национальный совет провинций"],["Провинции","9"],["Столицы","Три столичные функции"]],
+  symbols:[["Флаг","Шестицветный флаг, принятый в 1994 году."],["Герб","Современный герб принят в 2000 году; включает девиз на языке койсанской группы."],["Гимн","Комбинированный гимн на нескольких языках."]],
+  figures:[
+    {name:"Нельсон Мандела",years:"1918–2013",field:"государственная деятельность",note:"Первый президент демократической ЮАР и лауреат Нобелевской премии мира."},
+    {name:"Надин Гордимер",years:"1923–2014",field:"литература",note:"Писательница, лауреат Нобелевской премии по литературе 1991 года."},
+    {name:"Дезмонд Туту",years:"1931–2021",field:"общественная деятельность",note:"Англиканский архиепископ, лауреат Нобелевской премии мира 1984 года."}
+  ],
+  officials:[
+    ["Президент","Сирил Рамафоса","2018","https://www.thepresidency.gov.za/"],
+    ["Глава правительства","Президент исполняет функции главы правительства","2018","https://www.thepresidency.gov.za/"],
+    ["Министр международных отношений","Рональд Ламола","2024","https://www.dirco.gov.za/"]
+  ],
+  history:[["1652","Начало европейского поселения у мыса Доброй Надежды."],["1910","Образование Южно-Африканского Союза."],["1948–1994","Период апартеида."],["1994","Первые всеобщие выборы."],["1996","Принятие конституции."]],
+  economy:"Наиболее диверсифицированная экономика региона: горнодобыча, финансы, производство, сельское хозяйство, туризм и услуги. Вызовы включают энергоснабжение, неравенство и занятость.",
+  economyFacts:[["Экспорт","Минеральное сырьё, автомобили, сельхозпродукция"],["Финансовый центр","Йоханнесбург"],["Энергетика","Уголь, возобновляемые источники"],["Туризм","Кейптаун, Крюгер, винодельческие регионы"]],
+  international:"Член ООН, Африканского союза, G20 и БРИКС. Играет заметную роль в дипломатии Юга Африки.",
+  russia:[["Дипломатические отношения","1992, современная дипломатическая линия"],["Представительства","Посольства в Москве и Претории"],["Связи","Торговля, образование, многосторонняя дипломатия"],["Форматы","БРИКС и другие площадки"]],
+  security:"Официальные источники отмечают риски уличной преступности и перебоев инфраструктуры. Рекомендации для путешественников следует брать из актуальных консульских публикаций.",
+  securityFacts:[["Природные риски","Засухи, пожары, наводнения"],["Инфраструктура","Возможны перебои электроэнергии"],["Рекомендации","Консульские и местные официальные источники"],["Статус","Регулярная сверка"]],
+  culture:"Культура многоязычна. Кухня включает браай, боботи и блюда из кукурузы. Музыка, литература и спорт отражают сложную историю страны.",
+  cultureFacts:[["Кухня","Браай, боботи, билтонг"],["Музыка","Кwaito, аmapiano, джаз"],["Спорт","Регби, крикет, футбол"],["Наследие ЮНЕСКО","Роббен-Эйленд, Драконовы горы, капские флористические области"]]
+},
+mx:{
+  intro:"Мексика соединяет Северную и Центральную Америку. Страна обладает крупным населением, разнообразными природными зонами и богатым историческим наследием.",
+  geography:"Территория включает пустыни севера, центральные вулканические плато, тропические побережья и полуостров Юкатан. Берега омываются Тихим океаном, Мексиканским заливом и Карибским морем.",
+  geoFacts:[["Высшая точка","Орисаба, около 5 636 м"],["Крупные полуострова","Юкатан, Нижняя Калифорния"],["Природные зоны","Пустыни, леса, тропики, высокогорья"],["Ресурсы","Нефть, серебро, медь, сельхозземли"],["Охраняемые территории","Сиан-Каан, острова Ревилья-Хихедо"],["Побережья","Тихий океан и Карибский бассейн"]],
+  society:"Испанский является фактическим общенациональным языком; государство признаёт национальные языки коренных народов. Большинство населения живёт в городах.",
+  societyFacts:[["Оценка населения","около 130,9 млн · требует сверки"],["Общенациональный язык","испанский"],["Крупнейшая агломерация","Долина Мехико"],["Языковое наследие","Многочисленные языки коренных народов"]],
+  politics:"Федеративная президентская республика. Конституция 1917 года действует с поправками. Федерация состоит из 32 субъектов, включая Мехико.",
+  politicsFacts:[["Конституция","1917"],["Парламент","Сенат и Палата депутатов"],["Субъекты","32"],["Столица","Мехико"]],
+  symbols:[["Флаг","Зелёная, белая и красная вертикальные полосы с национальным гербом."],["Герб","Орёл на кактусе с змеёй; связан с основанием Теночтитлана."],["Гимн","«Himno Nacional Mexicano»."]],
+  figures:[
+    {name:"Бенито Хуарес",years:"1806–1872",field:"государственная деятельность",note:"Президент, связанный с либеральными реформами XIX века."},
+    {name:"Фрида Кало",years:"1907–1954",field:"искусство",note:"Художница, чьё творчество стало частью мировой художественной культуры."},
+    {name:"Октавио Пас",years:"1914–1998",field:"литература",note:"Поэт и эссеист, лауреат Нобелевской премии по литературе 1990 года."}
+  ],
+  officials:[
+    ["Президент","Клаудия Шейнбаум","2024","https://www.gob.mx/presidencia"],
+    ["Глава правительства","Президент исполняет функции главы правительства","2024","https://www.gob.mx/presidencia"],
+    ["Министр иностранных дел","Хуан Рамон де ла Фуэнте","2024","https://www.gob.mx/sre"]
+  ],
+  history:[["до XVI века","Мезоамериканские цивилизации, включая майя и ацтеков."],["1521","Падение Теночтитлана и начало колониального периода."],["1821","Независимость Мексики."],["1910–1920","Мексиканская революция."],["1917","Принятие конституции."]],
+  economy:"Обрабатывающая промышленность, автомобилестроение, электроника, нефтегазовый сектор, сельское хозяйство, туризм и денежные переводы составляют важные элементы экономики.",
+  economyFacts:[["Промышленность","Автомобили, электроника, аэрокосмическая продукция"],["Экспорт","Промышленные товары, нефть, сельхозпродукция"],["Туризм","Канкун, Мехико, Юкатан, тихоокеанские курорты"],["Торговые связи","США, Канада, страны Азии и Европы"]],
+  international:"Член ООН, G20, АТЭС и ОАГ. Участвует в региональных и глобальных экономических форматах.",
+  russia:[["Дипломатические отношения","1890; отношения с СССР установлены в 1924, восстановлены в 1942"],["Представительства","Посольства в Москве и Мехико"],["Связи","Торговля, культура, образование"],["Статус","Исторические даты сверять по МИД"]],
+  security:"Уровень рисков существенно различается по штатам и муниципалитетам. Следует использовать официальные рекомендации и не переносить оценку одного района на всю страну.",
+  securityFacts:[["Природные риски","Землетрясения, ураганы, вулканическая активность"],["Региональные различия","Выраженные"],["Рекомендации","МИД России и официальные местные источники"],["Статус","Регулярная сверка"]],
+  culture:"Кухня Мексики включена в список нематериального наследия ЮНЕСКО. Страна известна литературой, muralismo, кинематографом, праздником Día de Muertos и археологическими памятниками.",
+  cultureFacts:[["Кухня","Кукуруза, фасоль, чили, моле"],["Наследие ЮНЕСКО","Теотиуакан, Чичен-Ица, исторический центр Мехико"],["Музыка","Марьячи, сон, современные жанры"],["Спорт","Футбол, бокс, бейсбол"]]
+},
+cu:{
+  intro:"Куба — крупнейший остров Карибского моря. История страны сочетает испанское колониальное наследие, африканские культурные влияния и социалистическую политическую систему XX–XXI веков.",
+  geography:"Архипелаг включает основной остров Куба, остров Хувентуд и множество малых островов. Рельеф преимущественно равнинный с горными массивами на юго-востоке.",
+  geoFacts:[["Положение","Карибское море"],["Крупнейший остров","Куба"],["Высшая точка","Пико Туркино, 1 974 м"],["Природные зоны","Тропические равнины, влажные леса, мангры"],["Ресурсы","Никель, кобальт, сельхозземли"],["Охраняемые территории","Алехандро-де-Гумбольдт, Виньялес"]],
+  society:"Официальный язык — испанский. Население сосредоточено в городах; Гавана является крупнейшим культурным и экономическим центром.",
+  societyFacts:[["Оценка населения","около 10,9 млн · требует сверки"],["Официальный язык","испанский"],["Крупнейший город","Гавана"],["Демография","Старение и миграция — значимые темы"]],
+  politics:"Конституция 2019 года определяет социалистическую республику. Президент является главой государства; премьер-министр возглавляет правительство.",
+  politicsFacts:[["Конституция","2019"],["Парламент","Национальная ассамблея народной власти"],["Провинции","15 и специальный муниципалитет"],["Столица","Гавана"]],
+  symbols:[["Флаг","Пять горизонтальных полос и красный треугольник с белой звездой."],["Герб","Щит с тремя частями, фригийский колпак и дубовая ветвь."],["Гимн","«La Bayamesa»."]],
+  figures:[
+    {name:"Хосе Марти",years:"1853–1895",field:"литература и политика",note:"Поэт и деятель движения за независимость."},
+    {name:"Алисия Алонсо",years:"1920–2020",field:"балет",note:"Балерина и педагог, основательница национальной балетной школы."},
+    {name:"Селия Крус",years:"1925–2003",field:"музыка",note:"Певица, одна из наиболее известных исполнительниц сальсы."}
+  ],
+  officials:[
+    ["Президент","Мигель Диас-Канель","2019","https://www.presidencia.gob.cu/"],
+    ["Премьер-министр","Мануэль Марреро Крус","2019","https://www.presidencia.gob.cu/"],
+    ["Министр иностранных дел","Бруно Родригес Паррилья","2009","https://www.minrex.gob.cu/"]
+  ],
+  history:[["1492","Прибытие экспедиции Колумба на остров."],["XVI–XIX века","Испанский колониальный период."],["1902","Провозглашение республики."],["1959","Кубинская революция."],["2019","Принятие новой конституции."]],
+  economy:"Экономика включает туризм, медицинские и образовательные услуги, никелевую промышленность, сельское хозяйство и денежные переводы. Существенны ограничения импорта и инфраструктуры.",
+  economyFacts:[["Услуги","Туризм, медицина, образование"],["Экспорт товаров","Никель, табак, напитки, фармацевтическая продукция"],["Сельское хозяйство","Сахарный тростник, табак, цитрусовые"],["Вызовы","Импортная зависимость, энергоснабжение"]],
+  international:"Член ООН, ОАГ participation suspended/не участвует в текущей работе, АЛБА и КАРICOM-форматов. Поддерживает дипломатические отношения со многими государствами.",
+  russia:[["Дипломатические отношения","1942 с СССР; возобновлены в 1960 после перерыва"],["Представительства","Посольства в Москве и Гаване"],["Связи","Торговля, образование, туризм, гуманитарные контакты"],["Статус","Даты и соглашения сверять по МИД"]],
+  security:"Основные справочные риски связаны с ураганами, инфекционными заболеваниями и перебоями услуг. Актуальные рекомендации следует проверять перед поездкой.",
+  securityFacts:[["Природные риски","Ураганы, ливни, прибрежные наводнения"],["Здоровье","Рекомендации ВОЗ и местных органов"],["Инфраструктура","Возможны перебои"],["Статус","Регулярная сверка"]],
+  culture:"Кубинская музыка — сон, дансон, мамбо, сальса — оказала большое влияние на мировую культуру. Исторический центр Гаваны и долиня Виньялес входят в наследие ЮНЕСКО.",
+  cultureFacts:[["Музыка","Сон, дансон, мамбо, нуэва трова"],["Кухня","Рис, фасоль, юка, свинина, морепродукты"],["Спорт","Бейсбол, бокс"],["Наследие ЮНЕСКО","Старая Гавана, Виньялес, Тринидад"]]
+},
+br:{
+  intro:"Бразилия — крупнейшая страна Южной Америки по площади и населению. Она объединяет бассейны Амазонки и Ла-Платы, атлантическое побережье и крупные мегаполисы.",
+  geography:"Амазонская низменность, Бразильское плоскогорье, Пантанал, атлантические леса и протяжённое побережье формируют контрастные природные регионы.",
+  geoFacts:[["Высшая точка","Пико-да-Неблина, около 2 995 м"],["Крупные реки","Амазонка, Парана, Сан-Франсиску"],["Природные зоны","Амазония, серрадо, каатинга, Пантанал"],["Ресурсы","Железная руда, нефть, гидроресурсы, лес"],["Охраняемые территории","Игуасу, Центральная Амазония"],["Побережье","Атлантический океан"]],
+  society:"Португальский — официальный язык. Население высокоурбанизировано; крупнейшие агломерации — Сан-Паулу и Рио-де-Жанейро. Общество формировалось под влиянием коренных народов, европейской колонизации, африканской диаспоры и миграций.",
+  societyFacts:[["Оценка населения","около 212 млн · требует сверки"],["Официальный язык","португальский"],["Урбанизация","Высокая; сверять по Всемирному банку"],["Крупнейший город","Сан-Паулу"]],
+  politics:"Федеративная президентская республика. Конституция 1988 года определяет федерацию, права граждан и разделение властей. В составе страны 26 штатов и Федеральный округ.",
+  politicsFacts:[["Конституция","1988"],["Парламент","Федеральный сенат и Палата депутатов"],["Штаты","26 + Федеральный округ"],["Столица","Бразилиа"]],
+  symbols:[["Флаг","Зелёное поле, жёлтый ромб и синий круг с девизом «Ordem e Progresso»."],["Герб","Звезда, меч, кофейная и табачная ветви."],["Гимн","«Hino Nacional Brasileiro»."]],
+  figures:[
+    {name:"Машаду ди Асис",years:"1839–1908",field:"литература",note:"Писатель, одна из центральных фигур бразильской литературы."},
+    {name:"Оскар Нимейер",years:"1907–2012",field:"архитектура",note:"Архитектор модернистского направления, связанный с обликом Бразилиа."},
+    {name:"Пеле",years:"1940–2022",field:"спорт",note:"Футболист, трёхкратный чемпион мира."}
+  ],
+  officials:[
+    ["Президент","Луис Инасиу Лула да Силва","2023","https://www.gov.br/planalto/"],
+    ["Глава правительства","Президент исполняет функции главы правительства","2023","https://www.gov.br/planalto/"],
+    ["Министр иностранных дел","Мауру Виейра","2023","https://www.gov.br/mre/"]
+  ],
+  history:[["до XVI века","Разнообразные коренные общества и культуры."],["1500","Начало португальского колониального периода."],["1822","Провозглашение независимости."],["1889","Провозглашение республики."],["1988","Принятие действующей конституции."]],
+  economy:"Крупная диверсифицированная экономика: сельское хозяйство, горнодобыча, нефть, авиастроение, промышленность, услуги и креативные индустрии.",
+  economyFacts:[["Экспорт","Соя, железная руда, нефть, мясо, кофе, самолёты"],["Промышленность","Авиастроение, машиностроение, пищевая отрасль"],["Энергетика","Гидроэнергетика, нефть, биотопливо, ВИЭ"],["Туризм","Рио, Игуасу, Амазония, северо-восточное побережье"]],
+  international:"Член ООН, ОАГ, МЕРКОСУР, БРИКС и G20. Бразилиа играет заметную роль в многосторонней дипломатии и климатических переговорах.",
+  russia:[["Дипломатические отношения","1828, Российская империя"],["Представительства","Посольства в Москве и Бразилиа"],["Связи","Торговля, удобрения, энергетика, космос, многосторонние форматы"],["Форматы","БРИКС и другие площадки"]],
+  security:"Риски различаются по городам и районам. Природные угрозы включают наводнения, оползни, засухи и пожары. Следует использовать официальные рекомендации и актуальные данные.",
+  securityFacts:[["Природные риски","Наводнения, оползни, засухи, пожары"],["Городские риски","Различаются по районам"],["Рекомендации","МИД России, местные официальные источники"],["Статус","Регулярная сверка"]],
+  culture:"Бразильская культура известна самбой, босса-новой, карнавалом, литературой и футболом. Кухня сильно различается по регионам: фейжоада, акараже, шураско и блюда Амазонии.",
+  cultureFacts:[["Музыка","Самба, босса-нова, форро, MPB"],["Кухня","Фейжоада, акараже, pão de queijo"],["Спорт","Футбол, волейбол, единоборства"],["Наследие ЮНЕСКО","Бразилиа, Игуасу, исторический центр Салвадора"]]
+}
+};
+
+// Сохранённая учебная новостная подборка. Это демонстрационный резервный набор,
+// который НЕ выдаётся за текущую проверенную новостную ленту.
+// Для реального наполнения подключите ./data/news.json, созданный редактором или CI-процессом.
+const SAVED_NEWS = [
+{id:"n1",country:"br",days:2,category:"экономика",source:"Agência Brasil",url:"https://agenciabrasil.ebc.com.br/",original:"Governo announces new infrastructure investment package",ru:"Правительство объявило новый пакет инфраструктурных инвестиций",date:"2026-11-13"},
+{id:"n2",country:"eg",days:3,category:"экономика",source:"State Information Service",url:"https://www.sis.gov.eg/",original:"Egypt expands renewable energy cooperation",ru:"Египет расширяет сотрудничество в сфере возобновляемой энергетики",date:"2026-11-12"},
+{id:"n3",country:"ke",days:4,category:"наука",source:"Capital FM Kenya",url:"https://www.capitalfm.co.ke/news/",original:"Kenyan researchers develop drought-resistant crop varieties",ru:"Кенийские исследователи разрабатывают устойчивые к засухе сорта культур",date:"2026-11-11"},
+{id:"n4",country:"mx",days:5,category:"культура",source:"Secretaría de Cultura",url:"https://www.gob.mx/cultura",original:"Mexico celebrates Day of the Dead traditions",ru:"В Мексике отмечают традиции Дня мёртвых",date:"2026-11-10"},
+{id:"n5",country:"za",days:6,category:"общество",source:"SAnews",url:"https://www.sanews.gov.za/",original:"South Africa marks national heritage month",ru:"В ЮАР проходят мероприятия месяца национального наследия",date:"2026-11-09"},
+{id:"n6",country:"ng",days:8,category:"экономика",source:"News Agency of Nigeria",url:"https://nannews.ng/",original:"Nigeria commissions new agricultural processing facilities",ru:"В Нигерии введены новые предприятия по переработке сельхозпродукции",date:"2026-11-07"},
+{id:"n7",country:"cu",days:12,category:"культура",source:"CubaMinrex",url:"https://www.minrex.gob.cu/",original:"Cuba hosts international book fair activities",ru:"На Кубе проходят мероприятия международной книжной ярмарки",date:"2026-11-03"},
+{id:"n8",country:"cm",days:18,category:"общество",source:"Cameroon Tribune",url:"https://www.cameroon-tribune.cm/",original:"Cameroon expands rural water access programme",ru:"Камерун расширяет программу доступа к воде в сельских районах",date:"2026-10-28"},
+{id:"n9",country:"br",days:1,category:"общество",source:"Agência Brasil",url:"https://agenciabrasil.ebc.com.br/",original:"Brazil observes Republic Proclamation Day",ru:"В Бразилии отмечают День провозглашения республики",date:"2026-11-14"},
+{id:"n10",country:"eg",days:9,category:"наука",source:"State Information Service",url:"https://www.sis.gov.eg/",original:"New exhibition opens at the Grand Egyptian Museum",ru:"В Большом Египетском музее открылась новая выставка",date:"2026-11-06"}
+];
+
+function toast(message,undo) {
+  const el=document.createElement("div");
+  el.className="toast";
+  el.innerHTML=`<span>${esc(message)}</span>${undo?'<button type="button">Отменить</button>':""}`;
+  if(undo) el.querySelector("button").onclick=()=>{undo();el.remove()};
+  $("#toasts").append(el);
+  setTimeout(()=>el.remove(),4800);
+}
+function saveFavorites() { STORAGE.set("favorites",[...favorites]) }
+function toggleFavorite(id) {
+  const c=byId(id);
+  if(favorites.has(id)) {
+    favorites.delete(id); saveFavorites();
+    toast(`${c.name} удалена из избранного`,()=>{favorites.add(id);saveFavorites();renderRoute(false)});
+  } else {
+    favorites.add(id); saveFavorites(); toast(`${c.name} добавлена в избранное`);
+  }
+  renderRoute(false);
+}
+function countryCard(c) {
+  return `<article class="country-card reveal" style="--rc:${rc(c)}">
+    <button class="star ${favorites.has(c.id)?"on":""}" data-fav="${c.id}" aria-label="${favorites.has(c.id)?"Удалить из":"Добавить в"} избранное">★</button>
+    <div class="country-cover"><span class="flag">${flag(c.id)}</span></div>
+    <div class="country-body">
+      <h3><a href="#/country/${c.id}">${esc(c.name)}</a></h3>
+      <div class="meta">${esc(c.capital)} · ${esc(REGIONS[c.region].name)}</div>
+      <div class="pill-row"><span class="pill">${esc(c.currency)}</span><span class="pill">${fmt(c.area)} км²</span><span class="pill">${(c.population/1e6).toFixed(1)} млн</span></div>
+    </div>
+  </article>`;
+}
+function bindStars(root=document) {
+  root.querySelectorAll("[data-fav]").forEach(b=>b.onclick=()=>toggleFavorite(b.dataset.fav));
+}
+function pageHead(kicker,title,text) {
+  return `<div class="page-head"><div class="wrap"><div class="breadcrumb"><a href="#/">Атлас</a><span>›</span><span>${esc(kicker)}</span></div><h1>${esc(title)}</h1><p class="lead">${esc(text)}</p></div></div>`;
+}
+function homePage() {
+  const full=Object.keys(PROFILES).length;
+  return `<section class="hero"><div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">87 государств · 8 регионов · один справочник</div>
+      <h1>Откройте <em>Африку</em> и Латинскую Америку</h1>
+      <p class="lead">Нейтральный образовательный атлас: страны на интерактивной карте, проверяемые справочные карточки, история, культура, государственные символы и связи с Россией.</p>
+      <div class="hero-actions"><a class="btn btn-primary" href="#/map">Исследовать карту <span>→</span></a><a class="btn btn-secondary" href="#/countries">Все страны</a><a class="btn btn-secondary" href="#/methodology">Как проверяются данные</a></div>
+      <div class="stats"><div class="stat"><b>${countries.length}</b><span>стран в базовом каталоге</span></div><div class="stat"><b>${full}</b><span>развёрнутых учебных профилей</span></div><div class="stat"><b>8</b><span>географических регионов</span></div><div class="stat"><b>0 ₽</b><span>базовая стоимость хостинга</span></div></div>
+    </div>
+    <div class="hero-art" aria-hidden="true"><div class="orb"></div><div class="orb-label one">🌍 Африка</div><div class="orb-label two">🌎 Латинская Америка</div></div>
+  </div></section>
+  <section class="block"><div class="wrap">
+    <div class="section-head"><div><div class="eyebrow">Навигация</div><h2>Восемь путей к открытию</h2></div><p>Выберите регион, чтобы увидеть его страны, общую справку и быстрые переходы к подробным страницам.</p></div>
+    <div class="region-grid">${Object.entries(REGIONS).map(([id,r])=>`<a class="region-card reveal" style="--rc:${r.color}" href="#/region/${id}"><b>${regionCount(id)}</b><span class="region-dot"></span><span class="meta">Регион</span><h3>${r.name}</h3><p>${r.description}</p></a>`).join("")}</div>
+  </div></section>
+  <section class="block" style="background:rgba(255,253,247,.48);border-block:1px solid var(--line)"><div class="wrap">
+    <div class="section-head"><div><div class="eyebrow">Страны-образцы</div><h2>Начните с подробного профиля</h2></div><a class="btn btn-secondary btn-small" href="#/countries">Открыть каталог →</a></div>
+    <div class="feature-grid">${["eg","ng","cm","ke","za","mx","cu","br","ar"].filter(byId).slice(0,6).map(id=>countryCard(byId(id))).join("")}</div>
+  </div></section>
+  <section class="block"><div class="wrap">
+    <div class="section-head"><div><div class="eyebrow">Принципы</div><h2>Справка, а не сенсации</h2></div></div>
+    <div class="method-grid">
+      <article class="method-card reveal"><div class="num">01</div><h3>Источник у факта</h3><p>Каждый значимый показатель сопровождается ссылкой, датой оценки и статусом проверки.</p></article>
+      <article class="method-card reveal"><div class="num">02</div><h3>Новости отдельно</h3><p>Новостные материалы помечаются как отдельный слой и не подменяют энциклопедическую статью.</p></article>
+      <article class="method-card reveal"><div class="num">03</div><h3>Без выдуманных данных</h3><p>Непроверенные должности и статистика показываются со статусом «требует проверки», а не как установленный факт.</p></article>
+    </div>
+  </div></section>`;
+}
+function mapPage() {
+  const africa=countries.filter(c=>["na","wa","ca","ea","sa"].includes(c.region));
+  const america=countries.filter(c=>["mx","cb","sam"].includes(c.region));
+  const panel=(title,list,cols)=>`<div class="map-panel"><h3>${title}</h3><p>${list.length} стран · нажмите на код, чтобы открыть справочную карточку</p><div class="tile-map" style="grid-template-columns:repeat(${cols},43px)">${list.map(c=>`<button class="tile ${favorites.has(c.id)?"fav":""}" style="--rc:${rc(c)};grid-column:${c.x+1};grid-row:${c.y+1}" data-country="${c.id}" aria-label="${esc(c.name)}, столица ${esc(c.capital)}">${c.id.toUpperCase()}</button>`).join("")}</div><div class="map-legend">${Object.entries(REGIONS).filter(([id])=>list.some(c=>c.region===id)).map(([id,r])=>`<span><i class="region-dot" style="--rc:${r.color}"></i>${r.name}</span>`).join("")}</div></div>`;
+  return `${pageHead("Карта","Картографическая навигация","Схематическая интерактивная карта: географическое положение передано условно, но все страны доступны для выбора.")}<div class="wrap"><div class="map-layout">${panel("Африка",africa,21)}${panel("Латинская Америка",america,10)}</div><p class="map-note">Это учебная картограмма, а не точная географическая карта. Коды — ISO 3166-1 alpha-2. Для точных границ используйте официальные картографические источники.</p><div class="section-head" style="margin-top:55px"><div><div class="eyebrow">Быстрый переход</div><h2>Страны с развёрнутым профилем</h2></div></div><div class="country-grid">${Object.keys(PROFILES).map(byId).filter(Boolean).map(countryCard).join("")}</div></div>`;
+}
+function bindMap() {
+  $$(".tile").forEach(t=>t.onclick=()=>location.hash="#/country/"+t.dataset.country);
+}
+function countriesPage(regionId) {
+  const region=regionId?REGIONS[regionId]:null;
+  const list=regionId?countries.filter(c=>c.region===regionId):countries;
+  const title=region?region.name:"Все страны";
+  const text=region?region.description:"Поиск по названию, столице и региону; фильтры по языку, валюте и форме правления.";
+  const opts=(values)=>[...new Set(values)].sort((a,b)=>a.localeCompare(b,"ru")).map(v=>`<option value="${esc(v)}">${esc(v)}</option>`).join("");
+  return `${pageHead(region?"Регион":"Каталог",title,text)}<div class="wrap">
+    <div class="toolbar">
+      <div class="field"><label for="q">Поиск</label><input id="q" type="search" placeholder="Страна, столица или регион…"></div>
+      <div class="field"><label for="fRegion">Регион</label><select id="fRegion"><option value="">Все регионы</option>${Object.entries(REGIONS).map(([id,r])=>`<option value="${id}" ${id===regionId?"selected":""}>${r.name}</option>`).join("")}</select></div>
+      <div class="field"><label for="fLang">Язык</label><select id="fLang"><option value="">Любой</option>${opts(countries.map(c=>c.languages))}</select></div>
+      <div class="field"><label for="fCurrency">Валюта</label><select id="fCurrency"><option value="">Любая</option>${opts(countries.map(c=>c.currency))}</select></div>
+      <div class="field"><label for="fGov">Форма правления</label><select id="fGov"><option value="">Любая</option>${opts(countries.map(c=>c.government))}</select></div>
+      <div class="field"><label for="sort">Сортировка</label><select id="sort"><option value="name">По названию</option><option value="population">По населению</option><option value="area">По площади</option></select></div>
+    </div>
+    <div class="result-line"><span id="resultCount"></span><button class="btn btn-secondary btn-small" id="resetFilters">Сбросить фильтры</button></div>
+    <div class="country-grid" id="countryResults"></div>
+  </div>`;
+}
+function bindCountries(initialRegion) {
+  const q=$("#q"),fr=$("#fRegion"),fl=$("#fLang"),fc=$("#fCurrency"),fg=$("#fGov"),sort=$("#sort");
+  function apply() {
+    let list=[...countries],term=q.value.trim().toLocaleLowerCase("ru");
+    if(term) list=list.filter(c=>[c.name,c.official,c.capital,REGIONS[c.region].name,c.id].join(" ").toLocaleLowerCase("ru").includes(term));
+    if(fr.value) list=list.filter(c=>c.region===fr.value);
+    if(fl.value) list=list.filter(c=>c.languages===fl.value);
+    if(fc.value) list=list.filter(c=>c.currency===fc.value);
+    if(fg.value) list=list.filter(c=>c.government===fg.value);
+    list.sort((a,b)=>sort.value==="name"?a.name.localeCompare(b.name,"ru"):b[sort.value]-a[sort.value]);
+    $("#countryResults").innerHTML=list.length?list.map(countryCard).join(""):`<div class="empty" style="grid-column:1/-1"><div class="big">🧭</div><h2>Ничего не найдено</h2><p>Измените запрос или сбросьте фильтры.</p></div>`;
+    $("#resultCount").textContent=`Найдено: ${list.length} из ${countries.length}`;
+    bindStars($("#countryResults")); observeReveals();
+  }
+  [q,fr,fl,fc,fg,sort].forEach(el=>el.addEventListener("input",apply));
+  $("#resetFilters").onclick=()=>{q.value="";fr.value=initialRegion||"";fl.value="";fc.value="";fg.value="";sort.value="name";apply()};
+  apply();
+}
+function officialsTable(rows) {
+  return `<div class="notice warn">⚠ Должности и персональный состав правительств меняются. Имена ниже приведены как редакционная заготовка и требуют сверки по официальному источнику перед публикацией.</div><div style="overflow:auto"><table><thead><tr><th>Должность</th><th>Имя / статус</th><th>В должности с</th><th>Проверка</th><th>Источник</th></tr></thead><tbody>${rows.map(([role,name,since,url])=>`<tr><td>${esc(role)}</td><td><b>${esc(name)}</b><br>${badge("review")}</td><td>${esc(since)}</td><td>Не выполнена в этой версии</td><td><a href="${esc(url)}" target="_blank" rel="noopener">Официальный сайт ↗</a></td></tr>`).join("")}</tbody></table></div>`;
+}
+function newsHtml(countryId) {
+  const all=externalNews||SAVED_NEWS;
+  const max=newsPeriod==="today"?1:newsPeriod==="week"?7:30;
+  const items=all.filter(n=>n.country===countryId&&n.days<=max);
+  return `<div class="news-head"><div><h2 style="margin:0">Новости страны</h2><p class="meta" style="margin:4px 0 0">Отдельный новостной слой · машинный перевод помечается явно</p></div><div class="segmented" id="newsPeriod"><button data-period="today" class="${newsPeriod==="today"?"active":""}">Сегодня</button><button data-period="week" class="${newsPeriod==="week"?"active":""}">Неделя</button><button data-period="month" class="${newsPeriod==="month"?"active":""}">Месяц</button></div></div>
+  <div class="notice ${newsMode==="saved"?"warn":"blue"}">${newsMode==="saved"?"⚠ Резервный режим: показана встроенная сохранённая подборка. Она демонстрационная и не является текущей проверенной лентой.":"✓ Загружен внешний редакционный файл ./data/news.json."}</div>
+  <div class="news-list">${items.length?items.map(n=>`<article class="news-item"><span class="pill">${esc(n.category)}</span> ${badge("info")}<h3>${esc(n.ru)}</h3><div class="news-original">${esc(n.original)}</div><div class="news-meta"><span>${esc(n.source)}</span><span>${dateRu(n.date)}</span><span>Машинный перевод · требует редакторской проверки</span><a href="${esc(n.url)}" target="_blank" rel="noopener">Оригинал ↗</a></div></article>`).join(""):`<div class="empty"><div class="big">📰</div><h3>За выбранный период сохранённых материалов нет</h3><p>Выберите более длительный период или подключите редакционный файл новостей.</p></div>`}</div>
+  <button class="btn btn-secondary btn-small" style="margin-top:15px" id="refreshNews">Проверить внешний файл новостей</button>`;
+}
+function bindNews() {
+  const p=$("#newsPeriod");
+  if(p) p.querySelectorAll("button").forEach(b=>b.onclick=()=>{newsPeriod=b.dataset.period;renderRoute(false)});
+  const r=$("#refreshNews");
+  if(r) r.onclick=async()=>{
+    r.disabled=true;r.textContent="Проверяем источник…";
+    try {
+      const response=await fetch("./data/news.json",{cache:"no-store"});
+      if(!response.ok) throw new Error("Нет файла");
+      const data=await response.json();
+      if(!Array.isArray(data.items)) throw new Error("Неверный формат");
+      externalNews=data.items;newsMode="external";toast("Редакционный файл новостей загружен");
+    } catch {
+      externalNews=null;newsMode="saved";toast("Источник недоступен — оставлена сохранённая подборка");
+    }
+    renderRoute(false);
+  };
+}
+function countryPage(id) {
+  const c=byId(id),p=PROFILES[id];
+  if(!c) return notFound();
+  if(!p) return `${pageHead("Страна",c.name,"Базовая карточка заполнена. Развёрнутые разделы ожидают редакторской проверки и не заполняются выдуманными сведениями.")}<div class="wrap"><div class="country-hero" style="--rc:${rc(c)}"><div class="country-hero-grid"><div class="hero-flag">${flag(id)}</div><div><div class="eyebrow">${REGIONS[c.region].name}</div><h1>${esc(c.name)}</h1><p class="lead">${esc(c.official)}</p></div><div class="hero-buttons"><button class="btn" data-fav="${id}">${favorites.has(id)?"★ В избранном":"☆ В избранное"}</button><button class="btn" data-compare="${id}">⇄ Сравнить</button></div></div></div>${quickGrid(c)}<div class="notice warn">⚠ Развёрнутый профиль этой страны ещё не прошёл редакторскую проверку. Базовые поля ниже являются учебной заготовкой; перед публикацией сверьте их с источниками.</div>${section("base","Базовая карточка",facts([["Официальное название",c.official],["Столица",c.capital],["Регион",REGIONS[c.region].name],["Площадь",fmt(c.area)+" км²"],["Население",fmt(c.population)+" · учебная оценка"],["Языки",c.languages],["Валюта",c.currency],["Часовой пояс",c.timezone],["Телефонный код",c.phone],["Доменная зона",c.tld],["Форма правления",c.government]]),source("Статистический отдел ООН — M49 и справочные таблицы","https://unstats.un.org/unsd/methodology/m49/",SNAPSHOT,"review"))}<div class="info-section"><h2>Персональная заметка</h2><p>Сохраняется только в вашем браузере.</p><textarea id="note" rows="5" placeholder="Что вы хотите запомнить об этой стране?">${esc(notes[id]||"")}</textarea><div class="meta" id="noteStatus" style="margin-top:8px">Автосохранение включено</div></div></div>`;
+  const toc=[["overview","Обзор"],["geography","География"],["society","Население"],["politics","Политическое устройство"],["symbols","Символы"],["figures","Видные деятели"],["officials","Государственные служащие"],["history","История"],["economy","Экономика"],["international","Международные связи"],["security","Безопасность"],["culture","Культура"],["news","Новости"],["sources","Источники"]];
+  return `<div class="wrap" style="padding-top:32px"><div class="breadcrumb"><a href="#/">Атлас</a><span>›</span><a href="#/region/${c.region}">${REGIONS[c.region].name}</a><span>›</span><span>${esc(c.name)}</span></div>
+  <div class="country-hero" style="--rc:${rc(c)};margin-top:18px"><div class="country-hero-grid"><div class="hero-flag">${flag(id)}</div><div><div class="eyebrow">${REGIONS[c.region].name} · ${esc(c.capital)}</div><h1>${esc(c.name)}</h1><p class="lead">${esc(p.intro)}</p></div><div class="hero-buttons"><button class="btn" data-fav="${id}">${favorites.has(id)?"★ В избранном":"☆ В избранное"}</button><button class="btn" data-compare="${id}">⇄ Сравнить</button></div></div></div>
+  ${quickGrid(c)}
+  <div class="country-layout"><aside class="toc">${toc.map(([id,t])=>`<a href="#${id}" data-anchor="${id}">${t}</a>`).join("")}</aside><div class="article">
+  ${section("overview","Краткая карточка",facts([["Официальное название",c.official],["Столица",c.capital],["Регион",REGIONS[c.region].name],["Площадь",fmt(c.area)+" км²"],["Население",fmt(c.population)+" · оценка, требует сверки"],["Официальные языки",c.languages],["Валюта",c.currency],["Часовой пояс",c.timezone],["Телефонный код",c.phone],["Доменная зона",c.tld],["Форма правления",c.government]]),source("Статистический отдел ООН, справочные таблицы","https://unstats.un.org/unsd/methodology/m49/",SNAPSHOT,"review"))}
+  ${section("geography","География",`<p>${esc(p.geography)}</p>${facts(p.geoFacts)}`,source("Национальные статистические ведомства; Всемирный банк","https://data.worldbank.org/",SNAPSHOT,"review"))}
+  ${section("society","Население и общество",`<p>${esc(p.society)}</p>${facts(p.societyFacts)}`,source("UN DESA; Всемирный банк; национальная перепись","https://population.un.org/wpp/",SNAPSHOT,"review"))}
+  ${section("politics","Политическое устройство",`<p>${esc(p.politics)}</p>${facts(p.politicsFacts)}`,source("Официальный портал государства / конституционный текст","https://www.gov.br/",SNAPSHOT,"review"))}
+  ${section("symbols","Государственные символы",facts(p.symbols)+`<p style="margin-top:16px">Изображения флага и герба следует подключать только из Wikimedia Commons или официальных источников с соблюдением условий использования.</p>`)}
+  ${section("figures","Видные деятели",people(p.figures))}
+  ${section("officials","Текущие государственные служащие",officialsTable(p.officials))}
+  ${section("history","История",timeline(p.history),source("Национальные архивы; UNESCO World Heritage Centre","https://whc.unesco.org/",SNAPSHOT,"review"))}
+  ${section("economy","Экономика",`<p>${esc(p.economy)}</p>${facts(p.economyFacts)}`,source("Всемирный банк; МВФ; национальная статистика","https://data.worldbank.org/country/"+id.toUpperCase(),SNAPSHOT,"review"))}
+  ${section("international","Международные связи",`<p>${esc(p.international)}</p><h3>Связи с Россией</h3>${facts(p.russia)}`,source("МИД России; МИД страны; официальные договорные базы","https://www.mid.ru/",SNAPSHOT,"review"))}
+  ${section("security","Безопасность и текущие вызовы",`<div class="notice blue">ℹ Раздел содержит только нейтральную справочную сводку. Он не заменяет актуальные официальные рекомендации для путешественников.</div><p>${esc(p.security)}</p>${facts(p.securityFacts)}`,source("МИД России; официальные ведомства страны; ВОЗ","https://www.mid.ru/",SNAPSHOT,"review"))}
+  ${section("culture","Культура и повседневная жизнь",`<p>${esc(p.culture)}</p>${facts(p.cultureFacts)}`,source("UNESCO; национальные учреждения культуры","https://whc.unesco.org/",SNAPSHOT,"review"))}
+  <section class="info-section reveal" id="news">${newsHtml(id)}</section>
+  ${section("sources","Источники и персональная заметка",`<p>Справочные блоки этой страницы требуют предметной сверки. Новостной блок является отдельным слоем и не считается полностью проверенной энциклопедической статьёй.</p><div class="fact-grid"><div class="fact"><small>Последнее обновление шаблона</small><b>${dateRu(SNAPSHOT)}</b></div><div class="fact"><small>Статус профиля</small><b>Учебная версия · требует редакторской проверки</b></div></div><h3>Моя заметка</h3><textarea id="note" rows="5" placeholder="Что вы хотите запомнить об этой стране?">${esc(notes[id]||"")}</textarea><div class="meta" id="noteStatus" style="margin-top:8px">Автосохранение включено</div>`,source("Методология проекта","#/methodology",SNAPSHOT,"info"))}
+  </div></div></div>`;
+}
+function quickGrid(c) {
+  const items=[["Столица",c.capital],["Регион",REGIONS[c.region].name],["Площадь",fmt(c.area)+" км²"],["Население",fmt(c.population)],["Языки",c.languages],["Валюта",c.currency],["Часовой пояс",c.timezone],["Код телефона",c.phone],["Домен",c.tld],["Форма правления",c.government]];
+  return `<div class="quick-grid">${items.map(([k,v])=>`<div class="quick"><small>${k}</small><b>${esc(v)}</b></div>`).join("")}</div>`;
+}
+function bindCountry() {
+  bindStars();
+  $$("[data-compare]").forEach(b=>b.onclick=()=>{comparePair=[b.dataset.compare,comparePair[0]===b.dataset.compare?comparePair[1]:comparePair[0]];STORAGE.set("compare",comparePair);location.hash="#/compare"});
+  const note=$("#note"),status=$("#noteStatus");
+  if(note) {
+    let timer;
+    note.oninput=()=>{clearTimeout(timer);status.textContent="Сохраняем…";timer=setTimeout(()=>{const id=location.hash.split("/").pop();notes[id]=note.value;STORAGE.set("notes",notes);status.textContent="Сохранено в этом браузере · "+new Date().toLocaleTimeString("ru-RU",{hour:"2-digit",minute:"2-digit"})},450)};
+  }
+  bindNews();
+  $$(".toc a").forEach(a=>a.onclick=e=>{e.preventDefault();document.getElementById(a.dataset.anchor)?.scrollIntoView({behavior:"smooth",block:"start"})});
+}
+function comparePage() {
+  const options=countries.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join("");
+  return `${pageHead("Сравнение","Две страны рядом","Сопоставьте базовые показатели, регион, языки, валюту и форму правления. Численность населения — учебная оценка, требующая сверки.")}<div class="wrap">
+    <div class="compare-controls"><div class="field"><label for="compareA">Первая страна</label><select id="compareA">${options}</select></div><button class="icon-btn" id="swap" title="Поменять страны местами">⇄</button><div class="field"><label for="compareB">Вторая страна</label><select id="compareB">${options}</select></div></div>
+    <div id="compareContent"></div></div>`;
+}
+function bindCompare() {
+  const a=$("#compareA"),b=$("#compareB");
+  a.value=byId(comparePair[0])?comparePair[0]:countries[0].id;
+  b.value=byId(comparePair[1])?comparePair[1]:countries[1].id;
+  function draw() {
+    const x=byId(a.value),y=byId(b.value);comparePair=[x.id,y.id];STORAGE.set("compare",comparePair);
+    const maxPop=Math.max(x.population,y.population),maxArea=Math.max(x.area,y.area);
+    const card=c=>`<article class="compare-card" style="--rc:${rc(c)}"><div class="compare-top"><span style="font-size:45px">${flag(c.id)}</span><h2>${esc(c.name)}</h2><div>${esc(c.capital)} · ${esc(REGIONS[c.region].name)}</div></div><div style="padding:20px">${facts([["Официальное название",c.official],["Площадь",fmt(c.area)+" км²"],["Население",fmt(c.population)],["Языки",c.languages],["Валюта",c.currency],["Форма правления",c.government]])}<div style="margin-top:18px"><small>Население относительно выбранной пары</small><div class="bar"><i style="width:${c.population/maxPop*100}%"></i></div></div><div style="margin-top:13px"><small>Площадь относительно выбранной пары</small><div class="bar"><i style="width:${c.area/maxArea*100}%"></i></div></div><a class="btn btn-primary btn-small" style="margin-top:20px" href="#/country/${c.id}">Открыть профиль →</a></div></article>`;
+    $("#compareContent").innerHTML=`<div class="compare-grid">${card(x)}${card(y)}</div><div class="compare-table"><table><thead><tr><th>Показатель</th><th>${esc(x.name)}</th><th>${esc(y.name)}</th></tr></thead><tbody>${[["Столица","capital"],["Регион","region"],["Площадь, км²","area"],["Население","population"],["Официальные языки","languages"],["Валюта","currency"],["Часовой пояс","timezone"],["Телефонный код","phone"],["Доменная зона","tld"],["Форма правления","government"]].map(([label,key])=>{const vx=key==="region"?REGIONS[x.region].name:x[key],vy=key==="region"?REGIONS[y.region].name:y[key];return `<tr><td><b>${label}</b></td><td>${typeof vx==="number"?fmt(vx):esc(vx)}</td><td>${typeof vy==="number"?fmt(vy):esc(vy)}</td></tr>`}).join("")}</tbody></table></div>`;
+  }
+  a.onchange=b.onchange=draw;
+  $("#swap").onclick=()=>{[a.value,b.value]=[b.value,a.value];draw()};
+  draw();
+}
+function favoritesPage() {
+  const list=[...favorites].map(byId).filter(Boolean).sort((a,b)=>a.name.localeCompare(b.name,"ru"));
+  return `${pageHead("Личный кабинет","Избранные страны","Список хранится локально в вашем браузере. Регистрация и сервер не требуются.")}<div class="wrap">${list.length?`<div class="result-line"><span>Сохранено стран: ${list.length}</span><button class="btn btn-secondary btn-small" id="compareFav" ${list.length<2?"disabled":""}>Сравнить первые две</button></div><div class="country-grid">${list.map(countryCard).join("")}</div>`:`<div class="empty"><div class="big">☆</div><h2>Пока нет избранных стран</h2><p>Нажмите на звезду в карточке страны, чтобы сохранить её здесь.</p><a class="btn btn-primary" href="#/countries">Выбрать страну</a></div>`}</div>`;
+}
+function bindFavorites() {
+  bindStars();
+  const b=$("#compareFav");
+  if(b) b.onclick=()=>{const list=[...favorites].map(byId).filter(Boolean);comparePair=[list[0].id,list[1].id];STORAGE.set("compare",comparePair);location.hash="#/compare"};
+}
+function methodologyPage() {
+  return `${pageHead("Редакционная политика","Источники и методология","Как проект отличает справочные сведения от новостей, фиксирует даты и обращается с непроверенными данными.")}<div class="wrap">
+    <div class="method-grid">
+      <article class="method-card"><div class="num">1</div><h3>Официальные источники</h3><p>Конституции, правительства, статистические ведомства и дипломатические представительства — первая линия проверки.</p></article>
+      <article class="method-card"><div class="num">2</div><h3>Международные организации</h3><p>ООН, Всемирный банк, МВФ, ВТО, ЮНЕСКО, ВОЗ и региональные организации используются для сопоставимых показателей.</p></article>
+      <article class="method-card"><div class="num">3</div><h3>Справочные издания</h3><p>Энциклопедии и крупные справочники помогают с историческим контекстом, но не заменяют первичный источник.</p></article>
+    </div>
+    <div class="info-section" style="margin-top:22px"><h2>Статусы данных</h2><div class="fact-grid"><div class="fact"><small>Подтверждено</small><b>${badge("verified")}</b><p>Есть первичный или авторитетный источник, дата и редакторская сверка.</p></div><div class="fact"><small>Требует проверки</small><b>${badge("review")}</b><p>Значение является заготовкой либо источник не сверен в текущей редакции.</p></div><div class="fact"><small>Устарело</small><b>${badge("stale")}</b><p>Дата оценки слишком стара или показатель известен как изменившийся.</p></div><div class="fact"><small>Справочно</small><b>${badge("info")}</b><p>Методологическая или контекстная информация, не являющаяся статистическим фактом.</p></div></div></div>
+    <div class="info-section"><h2>Новости — отдельный слой</h2><p>Новостные материалы не смешиваются со справочной статьёй. Заголовок, перевод, источник, дата и ссылка хранятся отдельно. Машинный перевод всегда помечается. Чувствительные темы передаются нейтрально, без графических подробностей и непроверенных обвинений.</p><div class="notice warn">⚠ Встроенная новостная подборка этой автономной версии демонстрационная. Для публикации реальной ленты подключите редакционный JSON, сформированный из разрешённых RSS/API-источников.</div></div>
+    <div class="info-section"><h2>Нейтральность и безопасность</h2><p>Проект не публикует шокирующие изображения, графические описания насилия, язык вражды, пропагандистские оценки и сенсационные неподтверждённые утверждения. Спорные вопросы описываются атрибутированно: кто сообщает, когда и на основании какого документа.</p></div>
+    <div class="info-section"><h2>Что проверяется перед публикацией</h2><ol><li>Официальное название, столица, регион и коды страны.</li><li>Актуальность статистики и дата оценки.</li><li>Конституционная основа и административное деление.</li><li>Персональный состав высших должностей по официальным источникам.</li><li>Даты дипломатических отношений и наличие представительств.</li><li>Лицензии изображений и корректность ссылок.</li><li>Отсутствие недостоверных или эмоционально окрашенных формулировок.</li></ol></div>
+  </div>`;
+}
+function auditData() {
+  const ids=countries.map(c=>c.id),errors=[],warnings=[];
+  if(new Set(ids).size!==ids.length) errors.push("Есть повторяющиеся идентификаторы стран.");
+  countries.forEach(c=>{
+    ["id","name","official","capital","region","area","population","languages","currency","timezone","phone","tld","government","x","y"].forEach(k=>{if(c[k]===undefined||c[k]==="")errors.push(`${c.id}: отсутствует поле ${k}`)});
+    if(!REGIONS[c.region])errors.push(`${c.id}: неизвестный регион`);
+    if(!/^[a-z]{2}$/.test(c.id))errors.push(`${c.id}: код должен содержать две латинские буквы`);
+    if(typeof c.area!=="number"||c.area<=0)errors.push(`${c.id}: некорректная площадь`);
+    if(typeof c.population!=="number"||c.population<=0)warnings.push(`${c.id}: население требует сверки`);
+  });
+  Object.entries(PROFILES).forEach(([id,p])=>{
+    ["intro","geography","society","politics","symbols","figures","officials","history","economy","international","russia","security","culture"].forEach(k=>{if(!p[k])errors.push(`Профиль ${id}: отсутствует раздел ${k}`)});
+    if(p.officials?.some(o=>!/^https:\/\//.test(o[3])))errors.push(`Профиль ${id}: источник должностного лица должен быть HTTPS`);
+  });
+  return {errors,warnings,profiles:Object.keys(PROFILES).length,records:countries.length,regions:new Set(countries.map(c=>c.region)).size};
+}
+function dataPage() {
+  const a=auditData();
+  return `${pageHead("Служебная страница","Обновление и проверка данных","Автоматическая структурная проверка JSON, экспорт каталога и инструкции по редакторскому наполнению.")}<div class="wrap">
+    <div class="audit"><h2>Результат автоматической проверки</h2><p style="color:#c4d5d5">Проверяется структура данных, а не истинность каждого справочного факта. Содержательная верификация выполняется редактором по источникам.</p><div class="audit-grid"><div class="audit-box"><b>${a.records}</b><span>стран в каталоге</span></div><div class="audit-box"><b>${a.profiles}</b><span>развёрнутых профилей</span></div><div class="audit-box"><b>${a.errors.length}</b><span>структурных ошибок</span></div><div class="audit-box"><b>${a.warnings.length}</b><span>предупреждений</span></div></div></div>
+    <div class="info-section"><h2>Действия с данными</h2><div class="hero-actions"><button class="btn btn-primary" id="exportData">Экспортировать countries.json</button><label class="btn btn-secondary" style="cursor:pointer">Импортировать JSON<input type="file" id="importData" accept=".json,application/json" hidden></label><button class="btn btn-secondary" id="resetData">Вернуть встроенный каталог</button></div><div class="notice blue" style="margin-top:18px">ℹ Импорт проверяет структуру и сохраняет данные только в localStorage этого браузера. Это не изменяет файлы репозитория.</div></div>
+    <div class="info-section"><h2>Рекомендуемая структура репозитория</h2><pre style="overflow:auto;background:#102e35;color:#dce8e6;padding:20px;border-radius:14px;font-size:13px">atlas/
+├── index.html
+├── css/styles.css
+├── js/app.js
+├── data/
+│   ├── countries.json
+│   ├── regions.json
+│   ├── profiles/eg.json
+│   ├── profiles/br.json
+│   ├── news.json
+│   └── sources.json
+├── assets/maps/
+├── scripts/validate-data.mjs
+└── .github/workflows/validate.yml</pre></div>
+    <div class="info-section"><h2>Как добавить новую страну</h2><ol><li>Добавьте базовую запись в countries.json с уникальным ISO-кодом.</li><li>Создайте профиль в data/profiles/&lt;код&gt;.json.</li><li>Для каждого значимого факта укажите значение, источник, дату оценки и дату проверки.</li><li>Не заполняйте неподтверждённые должности выдуманными именами.</li><li>Запустите структурную проверку и редакторскую сверку.</li><li>Обновите дату страницы и опубликуйте изменения через GitHub Pages.</li></ol></div>
+    <div class="info-section"><h2>Ошибки и предупреждения</h2>${a.errors.length?`<div class="notice warn">${a.errors.map(esc).join("<br>")}</div>`:`<div class="notice blue">✓ Структурных ошибок не обнаружено.</div>`}${a.warnings.length?`<p class="meta">${a.warnings.length} записей содержат население как учебную оценку и требуют предметной сверки.</p>`:""}</div>
+  </div>`;
+}
+function bindData() {
+  $("#exportData").onclick=()=>{
+    const blob=new Blob([JSON.stringify({snapshot:SNAPSHOT,regions:REGIONS,countries},null,2)],{type:"application/json"});
+    const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="countries.json";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);toast("Файл countries.json подготовлен");
+  };
+  $("#importData").onchange=async e=>{
+    const file=e.target.files[0];if(!file)return;
+    try {
+      const data=JSON.parse(await file.text()),list=Array.isArray(data)?data:data.countries;
+      if(!Array.isArray(list)||!list.length)throw new Error("В файле нет массива countries");
+      const old=countries;countries=list;
+      const result=auditData();
+      if(result.errors.length){countries=old;throw new Error(result.errors.slice(0,4).join("; "))}
+      imported=list;STORAGE.set("imported",list);toast(`Импортировано стран: ${list.length}`);renderRoute(false);
+    } catch(err){toast("Импорт отклонён: "+err.message)}
+    e.target.value="";
+  };
+  $("#resetData").onclick=()=>{const old=imported;imported=null;countries=BASE;STORAGE.set("imported",null);toast("Встроенный каталог восстановлен",()=>{imported=old;countries=old||BASE;STORAGE.set("imported",old);renderRoute(false)});renderRoute(false)};
+}
+function notFound() {
+  return `<div class="wrap" style="padding-top:90px"><div class="empty"><div class="big">🧭</div><h1>Страница не найдена</h1><p>Проверьте адрес или начните с каталога стран.</p><a class="btn btn-primary" href="#/countries">Открыть каталог</a></div></div>`;
+}
+function observeReveals() {
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches) { $$(".reveal").forEach(e=>e.classList.add("in"));return }
+  const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.08});
+  $$(".reveal:not(.in)").forEach(e=>io.observe(e));
+}
+function renderRoute(scroll=true) {
+  const hash=location.hash||"#/",parts=hash.replace(/^#\/?/,"").split("/"),route=parts[0]||"home",id=parts[1];
+  let html="",after=()=>{};
+  if(route==="home"||route==="") {html=homePage();after=bindStars}
+  else if(route==="map") {html=mapPage();after=bindMap}
+  else if(route==="countries") {html=countriesPage();after=()=>bindCountries()}
+  else if(route==="region") {html=countriesPage(id);after=()=>bindCountries(id)}
+  else if(route==="country") {html=countryPage(id);after=bindCountry}
+  else if(route==="compare") {html=comparePage();after=bindCompare}
+  else if(route==="favorites") {html=favoritesPage();after=bindFavorites}
+  else if(route==="methodology") html=methodologyPage();
+  else if(route==="data") {html=dataPage();after=bindData}
+  else html=notFound();
+  $("#main").innerHTML=html;
+  after();observeReveals();
+  $$(".nav-links a").forEach(a=>a.classList.toggle("active",a.dataset.route===(route||"home")||(a.dataset.route==="countries"&&route==="region")||(a.dataset.route==="countries"&&route==="country")));
+  $("#navLinks").classList.remove("open");$("#menuBtn").setAttribute("aria-expanded","false");
+  if(scroll) window.scrollTo({top:0,behavior:"instant"});
+}
+function openSearch() {
+  $("#searchDialog").classList.add("open");$("#globalSearch").value="";drawGlobal("");setTimeout(()=>$("#globalSearch").focus(),30);
+}
+function closeSearch() { $("#searchDialog").classList.remove("open") }
+function drawGlobal(term) {
+  const t=term.trim().toLocaleLowerCase("ru");
+  const list=countries.filter(c=>!t||[c.name,c.official,c.capital,REGIONS[c.region].name,c.id].join(" ").toLocaleLowerCase("ru").includes(t)).slice(0,12);
+  $("#globalResults").innerHTML=list.length?list.map(c=>`<a class="search-result" href="#/country/${c.id}"><span class="flag-sm">${flag(c.id)}</span><span><b>${esc(c.name)}</b><small>${esc(c.capital)} · ${esc(REGIONS[c.region].name)}</small></span></a>`).join(""):`<div class="empty" style="padding:30px">Ничего не найдено</div>`;
+  $$(".search-result").forEach(a=>a.addEventListener("click",closeSearch));
+}
+$("#searchOpen").onclick=openSearch;
+$("#globalSearch").oninput=e=>drawGlobal(e.target.value);
+$("#searchDialog").onclick=e=>{if(e.target===$("#searchDialog"))closeSearch()};
+$("#menuBtn").onclick=()=>{const open=$("#navLinks").classList.toggle("open");$("#menuBtn").setAttribute("aria-expanded",String(open))};
+document.addEventListener("keydown",e=>{
+  if(e.key==="/"&&!["INPUT","TEXTAREA","SELECT"].includes(document.activeElement.tagName)){e.preventDefault();openSearch()}
+  if(e.key==="Escape")closeSearch();
+  if(e.key==="Enter"&&$("#searchDialog").classList.contains("open")) {const first=$(".search-result");if(first){closeSearch();location.hash=first.getAttribute("href")}}
+});
+window.addEventListener("hashchange",()=>renderRoute(true));
+renderRoute(true);
+</script>
+</body>
+</html>
